@@ -5,9 +5,7 @@ import routing from './home.routes';
 
 import HomeController from './home.controller';
 
-import admin from '../admin';
-
-export default angular.module('app.home', [uirouter, admin])
+export default angular.module('app.home', [uirouter])
 	.config(routing)
 	.controller('HomeController', HomeController)
 	.name;

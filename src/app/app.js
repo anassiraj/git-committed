@@ -7,6 +7,8 @@ import routing from './app.config';
 
 import home from './components/home';
 
+import admin from './components/admin';
+
 import '../style/app.css';
 
 let app = () => {
@@ -19,12 +21,14 @@ let app = () => {
 
 class AppCtrl {
 	constructor() {
+		this.mentees = ['Lucy', 'Jill', 'Jean', 'Foo', 'Bar'];
+		this.mentors = ['Jane', 'Sue', 'Sally'];
 	}
 }
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [uirouter, home])
+angular.module(MODULE_NAME, [uirouter, home, admin])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);
