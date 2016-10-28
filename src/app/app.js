@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import ngMaterial from 'angular-material';
 
 import routing from './app.config';
 
@@ -10,6 +10,8 @@ import home from './components/home';
 import admin from './components/admin';
 
 import '../style/app.css';
+
+import 'angular-material/angular-material.css';
 
 let app = () => {
 	return {
@@ -27,7 +29,7 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [uirouter, home, admin])
+angular.module(MODULE_NAME, [uirouter, home, admin, ngMaterial])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);
