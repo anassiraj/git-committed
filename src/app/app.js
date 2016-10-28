@@ -21,8 +21,7 @@ let app = () => {
 
 class AppCtrl {
 	constructor() {
-		this.mentees = ['Lucy', 'Jill', 'Jean', 'Foo', 'Bar'];
-		this.mentors = ['Jane', 'Sue', 'Sally'];
+		this.data = ['item1', 'item2'];
 	}
 }
 
