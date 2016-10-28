@@ -87,3 +87,13 @@ It will start a local server using `webpack-dev-server` which will watch, build 
 # License
 
 [MIT](/LICENSE)
+
+
+# Task List
+* Build Base Services
+* Build Data Structure
+* Build Skeleton UI
+* Queue Service for responses : uid@queue.att.com
+* Build DB Rules
+* Conference Room API
+* Web Font Installations    
