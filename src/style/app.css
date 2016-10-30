@@ -1,16 +1,30 @@
 /* styles in src/style directory are applied to the whole page */
-body {
 
+#content {
+	background-color: #0574ac;
 }
 
-main {
-  padding: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 50px;
-  display: block;
+#main-icons {
+  	text-align: center;
 }
 
-.col-sm-4 {
-	background-color: #f0f0f0;
+#main-icons i {
+  	color: #f2f2f2;
+  	margin: 5px;
+}
+
+.circle-icon {
+    background: #fcb314;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+    padding: 30px;
+    cursor: pointer;
+}
+
+.md-toolbar-tools {
+	background-color: #fcb314;
 }
