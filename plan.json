@@ -1,0 +1,43 @@
+"fall-mobilithon": {
+	"floors": {
+		"floor1": {
+
+			"events": {
+				"event1": {
+					"name": "Potluck",
+					"location": "Breakroom",
+					"description": "Halloween potlock to celebrate...",
+					"type": "Floor Event",
+					"createdByAttuid": "gb4264",
+					"startTime": "14:00",
+					"endTime": "15:00",
+					"dateCreated": "some date..."
+				}
+			},
+
+			"requests": {
+				"request1": {
+					"location": "Breakroom",
+					"type": "Coffee Machine",
+					"description": "Coffee machine does not display coffee option",
+					"status": "Open",
+					"pin": "6312454666",
+					"createdByAttuid": "gb4264",
+					"dateCreated": "...",
+					"dateLastUpdate": "...",
+					"dateClosed": "..."
+				}
+			},
+
+			"eateries": {
+				"eatery1": {
+					"name": "Some Food Truck",
+					"location": "Foodtruck Location",
+					"availableStartTime": "some date",
+					"availableEndTime": "some date"
+				}
+			}
+
+		}
+	}
+}
