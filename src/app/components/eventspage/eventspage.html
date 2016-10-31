@@ -1,7 +1,13 @@
 <div layout="column" layout-fill>
 <div class="flexbox-parent">
-	<div layout="row" layout-align="center center" style="height: 600px;">
-		This is events
+	<div layout="row" layout-align="center center" style="height: 850px;">
+      	<md-sidenav md-component-id="left" md-is-open="isSidenavOpen" class="md-sidenav-left">
+            <h4>Events</h4>
+        	<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+        </md-sidenav>
+        <md-button ng-click="openLeftMenu()">
+        	Open Side Nav
+        </md-button>
 	</div>
 </div>
 </div>

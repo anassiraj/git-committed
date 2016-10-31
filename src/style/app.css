@@ -4,7 +4,7 @@
 	background-color: #0574ac;
 }
 
-#main-icons {
+#main-icons, #eventscontainer {
   	text-align: center;
 }
 
@@ -41,4 +41,17 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
 
 md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
     color: #000;
+}
+
+.md-datepicker-input {
+    background: #fff !important;
+    padding: 5px !important;
+}
+
+.md-icon-button + .md-datepicker-input-container {
+    margin-left: 0 !important;
+}
+
+.md-sidenav-left h4 {
+    margin-left: 15px;
 }
