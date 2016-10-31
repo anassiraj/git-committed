@@ -15,6 +15,7 @@ require('firebase/storage');
 import 'angularfire';
 import '../style/app.css';
 import 'angular-material/angular-material.css';
+import fbs from './app.firebaseServices'
 
 const config = {
 	apiKey: 'AIzaSyDp_CQgna5k7vyPW89PiSY5xnOQCT5QU1U',
@@ -26,7 +27,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-const ref = firebase.database().ref();
+const ref = firebase.database().ref('/data/');
 
 let app = () => {
 	return {
@@ -58,7 +59,7 @@ class AppCtrl {
 		    const isAnonymous = user.isAnonymous;
 		    const uid = user.uid;
 		    // ...
-		    this.ref.set({ first: 'Ada', last: 'Lovelace' });
+		    this.ref.set({ first: 'Ada', last: 'Love' });
 		  } else {
 		    // User is signed out.
 		    // ...
@@ -73,7 +74,7 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 
-angular.module(MODULE_NAME, [uirouter, home, admin, food, concierge, eventspage, ngMaterial])
+angular.module(MODULE_NAME, [uirouter, home, admin, food, concierge, eventspage, ngMaterial, fbs])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);
