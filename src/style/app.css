@@ -4,17 +4,17 @@
 	background-color: #0574ac;
 }
 
-#main-icons, #eventscontainer {
+#main-icons {
   	text-align: center;
 }
 
 #main-icons i {
-  	color: #f2f2f2;
+  	color: #44c8f5;
   	margin: 5px;
 }
 
 .circle-icon {
-    background: #fcb314;
+    background: #f2f2f2;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -26,11 +26,13 @@
 }
 
 .md-toolbar-tools {
-	background-color: #fcb314;
+    text-align: center;
+	background-color: #f2f2f2;
 	cursor: pointer;
 }
 
 .md-toolbar-tools span {
+    color: #333333; 
 	margin: 5px 0 0 5px;
 }
 
@@ -41,17 +43,4 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
 
 md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
     color: #000;
-}
-
-.md-datepicker-input {
-    background: #fff !important;
-    padding: 5px !important;
-}
-
-.md-icon-button + .md-datepicker-input-container {
-    margin-left: 0 !important;
-}
-
-.md-sidenav-left h4 {
-    margin-left: 15px;
 }
