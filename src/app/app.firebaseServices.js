@@ -1,15 +1,15 @@
-'use strict';
+import angular from 'angular';
+const firebase = require('firebase/app');
 
-
-angular.module('app')
-  .service('firebaseServices', ['$rootScope', function ($rootScope, $firebaseAuth) {
+class firebaseServices {
 
 	/******************************************************
 	*                 C.R.U.D. - start                    *
 	*******************************************************/
 
-	// Sets data at given path.
-	this.setData = function(path, data) {
+	/* Sets data at given path.*/
+	setData(path, data) {
+		console.log(firebase.auth());
 		firebase.database().ref(path).set(data)
 			.then(function(data) {
 				console.log('success : data set');
@@ -21,7 +21,7 @@ angular.module('app')
 			});
 	};
 
-	this.pushData = function(path, data) {
+	pushData(path, data) {
 		firebase.database().ref(path).push(data)
 			.then(function(data) {
 				console.log('success : data pushed');
@@ -34,7 +34,7 @@ angular.module('app')
 	};
 
 	// Updates data at given path.
-	this.updateData = function(path, data) {
+	updateData(path, data) {
 		var updates = {};
 		updates[path] = data;
 		firebase.database().ref().update(updates)
@@ -49,10 +49,10 @@ angular.module('app')
 	};
 
 	// Removes data from given path.
-	this.removeData = function(path) {
+	removeData(path) {
 		firebase.database().ref(path).remove()
 			.then(function(data) {
-				console.log('success : data Deleted');
+				console.log('success : data deleted');
 			})
 			.catch(function(error) {
 				var errorCode = error.code;
@@ -62,11 +62,17 @@ angular.module('app')
 	};
 
 	// Gets data from directed path, returns a promise.
-	this.getData = function(path) {
+	getData(path) {
 		return firebase.database().ref(path)
 			.once('value')
 			.then(function(snapshot) {
+				console.log('success : data retrieved');
 				return snapshot.val();
+			})
+			.catch(function(error) {
+				var errorCode = error.code;
+	  			var errorMessage = error.message;
+				console.log('ERROR: ' + error.code + ': ' + error.message);
 			});
 	};
 
@@ -74,4 +80,8 @@ angular.module('app')
 	*                  C.R.U.D. - end                     *
 	*******************************************************/
 
-  }]);
+}
+
+export default angular.module('fbs', [])
+	.service('firebaseServices', firebaseServices)
+	.name;
