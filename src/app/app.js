@@ -4,9 +4,10 @@ import ngMaterial from 'angular-material';
 import routing from './app.config';
 import home from './components/home';
 import admin from './components/admin';
-import food from './components/food';
-import concierge from './components/concierge';
+import menu from './components/menu';
+import tasks from './components/tasks';
 import eventspage from './components/eventspage';
+import floor from './components/floor';
 const firebase = require('firebase/app');
 // all 3 are optional and you only need to require them at the start
 require('firebase/auth');
@@ -74,7 +75,7 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 
-angular.module(MODULE_NAME, [uirouter, home, admin, food, concierge, eventspage, ngMaterial, fbs])
+angular.module(MODULE_NAME, [uirouter, home, admin, menu, tasks, eventspage, floor, ngMaterial, fbs])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);

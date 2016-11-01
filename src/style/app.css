@@ -1,6 +1,6 @@
 /* styles in src/style directory are applied to the whole page */
 
-#content {
+body, #content {
 	background-color: #0574ac;
 }
 
@@ -9,12 +9,22 @@
 }
 
 #main-icons i {
-  	color: #f2f2f2;
+  	color: #44c8f5;
   	margin: 5px;
 }
 
+#main-icons span {
+    font-size: 20px;
+}
+
+#main-icons button {
+    background: transparent;
+    outline: 0;
+    border: 0;
+}
+
 .circle-icon {
-    background: #fcb314;
+    background: #f2f2f2;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -26,12 +36,12 @@
 }
 
 .md-toolbar-tools {
-	background-color: #fcb314;
+	background-color: #f2f2f2;
 	cursor: pointer;
 }
 
 .md-toolbar-tools span {
-	margin: 5px 0 0 5px;
+    color: #333333; 
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
@@ -41,4 +51,89 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
 
 md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
     color: #000;
+}
+
+md-list {
+    display: inline-block;
+}
+
+/* Nav Toggle */
+
+#nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #000;
+  position: absolute;
+  display: block;
+  content: '';
+}
+#nav-toggle span:before {
+  top: -10px; 
+}
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  transition: all 500ms ease-in-out;
+}
+#nav-toggle.active span {
+  background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
+}
+
+/* Floors */
+
+.floorplan, .room {
+    border: 1px solid #ee7538;
+}
+
+.floorplan {
+    background: #ebecec;
+    height: 300px;
+    position: relative;
+    width: 200px;
+}
+
+.room {
+    background: #fff;
+    color: #000;
+    display: block;
+    font-family: Impact, sans-serif;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+}
+
+.room:hover {
+    background: #ee7538;
+    color: #fff;
+}
+
+#floor1 {
+    height: 50px;
+    width: 100px;
+    left: 20px;
+    line-height: 50px;
+    top: 20px;
+}
+
+#floor2 {
+    height: 50px;
+    width: 100px;
+    left: 20px;
+    line-height: 50px;
+    top: 100px;
 }
