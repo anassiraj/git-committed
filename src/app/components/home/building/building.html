@@ -1,5 +1,8 @@
-<body layout="column">
+<!-- <body layout="column">
     <div layout="row" layout-align='center' flex style="height:850px;">
         <p> Buildings </p>
     </div>
 </body>
+ -->
+
+<div ng-repeat="(key, values) in building.buildings">{{values.displayName}}</div>
