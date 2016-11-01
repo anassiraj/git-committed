@@ -1,5 +1,5 @@
 export default class FloorController {
-	constructor(firebaseServices, $q) {
+	constructor(firebaseServices, $q, $rootScope) {
 
 		const floorData = firebaseServices.getData('/buildings/twoBell');
 
@@ -8,5 +8,9 @@ export default class FloorController {
 			this.floors = data[0]['floors'];
 		});
 
+
+
 	}
+
+	
 }
