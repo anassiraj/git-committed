@@ -5,4 +5,4 @@
 </body>
  -->
 
-<div ng-repeat="(key, values) in building.buildings">{{values.displayName}}</div>
+<div ng-repeat="(key, values) in building.buildings" ng-click="building.setBuilding(key)">{{values.displayName}} </div>

@@ -1,5 +1,9 @@
 export default class BuildingController {
-	constructor(firebaseServices, $q) {
+	constructor($state, firebaseServices, $q, $rootScope) {
+
+		this.$rootScope = $rootScope; 
+
+		this.$state = $state;
 
 		const buildingsData = firebaseServices.getData('buildings');
 
@@ -7,5 +11,13 @@ export default class BuildingController {
 			this.buildings = data[0];
 		});
 
+
+	}
+
+	setBuilding(building) {
+		this.$rootScope.currentBuilding = building;
+		// console.log(building);
+		// console.log(this.$scope.currentBuilding);
+		this.$state.go('floors');
 	}
 }

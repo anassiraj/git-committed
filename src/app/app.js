@@ -40,7 +40,10 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor() {
+	constructor($rootScope) {
+
+		$rootScope.currentBuilding = null;
+
 		this.data = ['item1', 'item2'];
 
 		this.ref = ref;

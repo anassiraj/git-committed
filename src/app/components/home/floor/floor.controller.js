@@ -1,11 +1,13 @@
 export default class FloorController {
-	constructor(firebaseServices, $q) {
+	constructor($rootScope, firebaseServices, $q) {
 
-		const floorData = firebaseServices.getData('/buildings/twoBell');
+		this.building = $rootScope.currentBuilding;
+
+		const floorData = firebaseServices.getData(`/buildings/${this.building}`);
 
 		$q.all([floorData]).then((data)=>{
-			console.log(data)
 			this.floors = data[0]['floors'];
+			console.log(this.floors);
 		});
 
 	}
