@@ -21,10 +21,10 @@
         </div> -->
 
         <md-card>
-          <md-button ng-repeat='(floor, details) in floor.floors'>
-            <div>
-              {{details.displayName}}
-            </div>
+          <md-button ng-repeat='f in floor.floors'>
+            <p>
+              {{f.displayName}}
+            </p>
           </md-button>
         </md-card>
     </div>
