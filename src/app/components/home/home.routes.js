@@ -7,5 +7,11 @@ export default function routes($stateProvider) {
 		template: require('./home.html'),
 		controller: 'HomeController',
 		controllerAs: 'home'
+	})
+	.state('floor', {
+		url: '/floor',
+		template: require('./floor/floor.html'),
+		controller: 'FloorController',
+		controllerAs: 'floor'
 	});
 }

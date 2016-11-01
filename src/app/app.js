@@ -7,7 +7,7 @@ import admin from './components/admin';
 import menu from './components/menu';
 import tasks from './components/tasks';
 import eventspage from './components/eventspage';
-import floor from './components/floor';
+import floor from './components/home/floor';
 import building from  './components/building';
 const firebase = require('firebase/app');
 // all 3 are optional and you only need to require them at the start
