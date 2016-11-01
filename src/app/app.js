@@ -44,11 +44,13 @@ class AppCtrl {
 
 		this.ref = ref;
 
+		var email = 'gitcommitted@att.com';
+		var password = '123456';
 
-		firebase.auth().signInAnonymously().catch((error)=> {
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 		  // Handle Errors here.
-		  const errorCode = error.code;
-		  const errorMessage = error.message;
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
 		  // ...
 		});
 
