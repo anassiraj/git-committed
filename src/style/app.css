@@ -47,7 +47,7 @@ body, #content {
 }
 
 .md-toolbar-tools span {
-    color: #333333; 
+    color: #333333;
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
@@ -77,7 +77,7 @@ md-list {
   content: '';
 }
 #nav-toggle span:before {
-  top: -10px; 
+  top: -10px;
 }
 #nav-toggle span:after {
   bottom: -10px;
@@ -142,4 +142,8 @@ md-list {
     left: 20px;
     line-height: 50px;
     top: 100px;
+}
+
+md-card, md-button {
+	width: 250px;
 }
