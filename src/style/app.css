@@ -139,5 +139,11 @@ md-list {
 }
 
 md-card, md-button {
+	background-color: #0574ac;
 	width: 250px;
+}
+
+.building-title {
+	color: white;
+	text-align: center;
 }
