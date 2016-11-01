@@ -5,7 +5,7 @@ export default class HomeController {
 		var temp = {'name' : 'James'};
 		firebaseServices.setData('/users', temp);
 
-		var $promise = firebaseServices.getData('/');
+		var $promise = firebaseServices.getData('/users');
 
 		$promise.then(function(data) {
 			console.log(data);
