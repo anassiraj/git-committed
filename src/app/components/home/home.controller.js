@@ -3,7 +3,7 @@ export default class HomeController {
 
 		/*Testing firebaseServices*/
 		var temp = {'name' : 'James'};
-		firebaseServices.setData('/', temp);
+		firebaseServices.setData('/users', temp);
 
 		var $promise = firebaseServices.getData('/');
 

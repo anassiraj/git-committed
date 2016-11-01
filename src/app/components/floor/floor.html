@@ -1,6 +1,6 @@
 <body layout="column">
-    <div layout="row" flex style="height:850px;">
-        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <div layout="row" layout-align='center' flex style="height:850px;">
+        <!-- <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
             <md-list>
                 <md-list-item><a ui-sref="home">Home</a></md-list-item>
             </md-list>
@@ -18,6 +18,14 @@
                     </div>
 	            </div>
 	        </div>
-        </div>
+        </div> -->
+
+        <md-card>
+          <md-button ng-repeat='(floor, details) in floor.floors'>
+            <div>
+              {{details.displayName}}
+            </div>
+          </md-button>
+        </md-card>
     </div>
 </body>
