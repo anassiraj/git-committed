@@ -42,11 +42,6 @@ let app = () => {
 class AppCtrl {
 	constructor($rootScope) {
 
-		$rootScope.currentBuilding = null;
-		$rootScope.currentFloor = null;
-
-		this.data = ['item1', 'item2'];
-
 		this.ref = ref;
 
 		var email = 'gitcommitted@att.com';
