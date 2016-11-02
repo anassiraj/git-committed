@@ -1,14 +1,19 @@
 export default class FloorController {
-	constructor($rootScope, firebaseServices, $q) {
+	constructor($state, $stateParams, firebaseServices, $q) {
 
-		this.building = $rootScope.currentBuilding;
+		this.$state = $state; 
+		
+		this.building = $stateParams.currentBuilding;
 
 		const floorData = firebaseServices.getData(`/buildings/${this.building}`);
 
 		$q.all([floorData]).then((data)=>{
 			this.floors = data[0]['floors'];
-			console.log(this.floors);
 		});
 
+	}
+
+	setFloor(floor) {
+		this.$state.go('eventspage', { 'currentFloor': floor });
 	}
 }
