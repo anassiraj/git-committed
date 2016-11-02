@@ -4,6 +4,10 @@ body, #content {
 	background-color: #0574ac;
 }
 
+.md-title img {
+  width: 14rem;
+}
+
 #main-icons {
   	text-align: center;
   	font-size: 70px;
@@ -38,12 +42,7 @@ body, #content {
 }
 
 .md-toolbar-tools {
-	background-color: #f2f2f2;
 	cursor: pointer;
-}
-
-.md-toolbar-tools span {
-    color: #333333;
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
@@ -67,7 +66,7 @@ md-list {
   border-radius: 1px;
   height: 5px;
   width: 35px;
-  background: #000;
+  background: #fff;
   position: absolute;
   display: block;
   content: '';
@@ -141,5 +140,11 @@ md-list {
 }
 
 md-card, md-button {
+	background-color: #0574ac;
 	width: 250px;
+}
+
+.building-title {
+	color: white;
+	text-align: center;
 }
