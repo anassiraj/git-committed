@@ -1,18 +1,22 @@
-<body layout="column">
-    <div layout="row" flex style="height:900px;">
-        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-            <md-list>
-                <md-list-item><a ui-sref="home">Home</a></md-list-item>
-                <md-list-item><a ui-sref="floor">Floor</a></md-list-item>
-                <md-list-item><a ui-sref="building">Building</a></md-list-item>
-            </md-list>
-        </md-sidenav>
-        <div layout="column" flex id="content">
-	        <div class="flexbox-parent">
-	            <div layout="row" layout-align="center center" style="min-height: 850px;">
-	                This is Events
-	            </div>
-	        </div>
-        </div>
-    </div>
-</body>
+
+<div layout='column' layout-margin layout-align='center end' class='buildings-container'>
+  <md-card ng-repeat="(key, values) in eventspage.events">
+<!--     <img ng-src='/img/building.svg' class='md-card-image'>
+ -->
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline event-title">{{values.name}} </span>       
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <p> {{values.eventDate}} </p>
+        <p> {{values.description}} </p>
+        <p> {{values.location}} : {{values.startTime}}-{{values.endTime}} </p>
+    </md-card-content>
+  </md-card>
+</div>
+<div layout = 'column' layout-align='end end'>
+    <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
+        <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
+  </md-button>
+</div>
