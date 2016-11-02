@@ -4,24 +4,12 @@ export default class EventsPageController {
 
 		this.$state = $state;
 		
-		this.currentFloor = $stateParams.currentFloor;
-
-		this.currentBuilding = $stateParams.currentBuilding;
-
-		const eventData = firebaseServices.getData(`buildings/${this.currentBuilding}/floors/${this.currentFloor}/events`);
-
-		const floorData = firebaseServices.getData(`buildings/${this.currentBuilding}/floors/${this.currentFloor}`);
-
-		const buildingData = firebaseServices.getData(`buildings/${this.currentBuilding}`);
+		const eventData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
 
 		const selectedDay = '11/1/16';
 
-		$q.all([eventData, floorData, buildingData]).then( (data) => {
-			this.buildingName = data[2]['displayName'];
-			this.floorName = data[1]['displayName'];
-			this.events = _.filter(data[0], function(events) {
-				return (events.eventDate == selectedDay);
-			});
+		$q.all([eventData]).then( (data) => {
+			this.events = _.filter(data[0], (events) => events.eventDate === selectedDay);
 		});
 
 		$scope.addEvent = function(ev){

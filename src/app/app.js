@@ -4,8 +4,11 @@ import ngMaterial from 'angular-material';
 import lodash from 'lodash';
 import routing from './app.config';
 import admin from './components/admin';
-import tasks from './components/admin/tasks';
-import eventspage from './components/home/eventspage';
+// import tasks from './components/admin/tasks';
+import floorhome from './components/home/floorhome';
+import eventspage from './components/home/floorhome/eventspage';
+import tasks from './components/home/floorhome/tasks';
+import menus from './components/home/floorhome/menus';
 import floor from './components/home/floor';
 import building from  './components/home/building';
 const firebase = require('firebase/app');
@@ -76,7 +79,18 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 
-angular.module(MODULE_NAME, [uirouter, admin, tasks, eventspage, floor, building, ngMaterial, fbs])
+angular.module(MODULE_NAME, [
+		uirouter, 
+		admin, 
+		tasks, 
+		floorhome,
+		eventspage,
+		menus, 
+		floor, 
+		building, 
+		ngMaterial, 
+		fbs
+	])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);
