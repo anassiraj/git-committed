@@ -15,7 +15,6 @@ export default class EventsPageController {
 		const buildingData = firebaseServices.getData(`buildings/${this.currentBuilding}`);
 
 		$q.all([eventData, floorData, buildingData]).then( (data) => {
-			console.log(data);
 			this.buildingName = data[2]['displayName'];
 			this.floorName = data[1]['displayName'];
 			this.events = data[0];
