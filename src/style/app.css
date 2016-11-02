@@ -102,11 +102,14 @@ md-card md-card-title {
 }
 
 md-card, md-button {
-	background-color: #0574ac;
 	width: 250px;
 }
 
+md-card-image {
+  background: #0574ac;
+}
+
 .building-title {
-	color: white;
+	color: #0574ac;
 	text-align: center;
 }
