@@ -51,6 +51,7 @@ class AppCtrl {
 		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
+		  console.log('ERROR: ' + error.code + ': ' + error.message);
 		  // ...
 		});
 
@@ -62,7 +63,6 @@ class AppCtrl {
 		    const isAnonymous = user.isAnonymous;
 		    const uid = user.uid;
 		    // ...
-		    this.ref.set({ first: 'Ada', last: 'Love' });
 		  } else {
 		    // User is signed out.
 		    // ...
