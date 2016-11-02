@@ -2,9 +2,7 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 import routing from './app.config';
-// import home from './components/home';
 import admin from './components/admin';
-// import menu from './components/menu';
 import tasks from './components/admin/tasks';
 import eventspage from './components/home/eventspage';
 import floor from './components/home/floor';
@@ -41,11 +39,6 @@ let app = () => {
 
 class AppCtrl {
 	constructor($rootScope) {
-
-		$rootScope.currentBuilding = null;
-		$rootScope.currentFloor = null;
-
-		this.data = ['item1', 'item2'];
 
 		this.ref = ref;
 

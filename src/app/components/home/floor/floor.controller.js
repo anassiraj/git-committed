@@ -3,11 +3,12 @@ export default class FloorController {
 
 		this.$state = $state; 
 		
-		this.building = $stateParams.currentBuilding;
+		this.currentBuilding = $stateParams.currentBuilding;
 
-		const floorData = firebaseServices.getData(`/buildings/${this.building}`);
+		const floorData = firebaseServices.getData(`/buildings/${this.currentBuilding}`);
 
 		$q.all([floorData]).then((data)=>{
+			this.buildingName = data[0]['displayName'];
 			this.floors = data[0]['floors'];
 		});
 
@@ -16,7 +17,7 @@ export default class FloorController {
 	setFloor(floor) {
 		this.$state.go('eventspage', { 
 			'currentFloor': floor,
-			'currentBuilding': this.building
+			'currentBuilding': this.currentBuilding
 		});
 	}
 }
