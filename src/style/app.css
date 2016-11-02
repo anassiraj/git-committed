@@ -10,20 +10,16 @@ body, #content {
 
 #main-icons {
   	text-align: center;
-}
-
-#main-icons {
-    font-size: 50px;
+  	font-size: 70px;
 }
 
 #main-icons i {
   	color: #44c8f5;
   	margin: 5px;
     font-style: normal;
-    font-size: 80px;
 }
 
-#main-icons span {
+#main-icons p {
     font-size: 20px;
 }
 
