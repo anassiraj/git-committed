@@ -1,20 +1,20 @@
-<!-- <body layout="column">
-    <div layout="row" layout-align='center' flex style="height:850px;">
-        <p> Buildings </p>
+<body layout="column">
+    <div layout="row" flex style="height:850px;">
+        <div layout="column" flex id="content">
+          <div class="flexbox-parent">
+              <div layout="row" layout-align="center center" style="min-height: 850px;" layout-wrap>
+                    <md-card class='building-card' ng-repeat="(key, values) in building.buildings" ng-click="building.setBuilding(key)">
+
+                    <img ng-src='/img/building.svg' class='md-card-image'>
+
+                    <md-card-title>
+                      <md-card-title-text>
+                        <span class="md-headline building-title">{{values.displayName}}</span>
+                      </md-card-title-text>
+                    </md-card-title>
+                  </md-card>
+              </div>
+          </div>
+        </div>
     </div>
 </body>
- -->
-
-<div layout='row' layout-align='center center' class='buildings-container'>
-
-  <md-card class='building-card' ng-repeat="(key, values) in building.buildings" ng-click="building.setBuilding(key)">
-
-    <img ng-src='/img/building.svg' class='md-card-image'>
-
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline building-title">{{values.displayName}}</span>
-      </md-card-title-text>
-    </md-card-title>
-  </md-card>
-</div>
