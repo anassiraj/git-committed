@@ -1,7 +1,11 @@
 /* styles in src/style directory are applied to the whole page */
 
-body, #content {
+html, body, #content {
 	background-color: #0574ac;
+}
+
+.md-title img {
+  width: 14rem;
 }
 
 #main-icons {
@@ -38,12 +42,7 @@ body, #content {
 }
 
 .md-toolbar-tools {
-	background-color: #f2f2f2;
 	cursor: pointer;
-}
-
-.md-toolbar-tools span {
-    color: #333333;
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
@@ -67,7 +66,7 @@ md-list {
   border-radius: 1px;
   height: 5px;
   width: 35px;
-  background: #000;
+  background: #fff;
   position: absolute;
   display: block;
   content: '';
@@ -97,49 +96,20 @@ md-list {
 
 /* Floors */
 
-.floorplan, .room {
-    border: 1px solid #ee7538;
-}
-
-.floorplan {
-    background: #ebecec;
-    height: 300px;
-    position: relative;
-    width: 200px;
-}
-
-.room {
-    background: #fff;
-    color: #000;
-    display: block;
-    font-family: Impact, sans-serif;
-    font-weight: bold;
-    position: absolute;
+md-card md-card-title {
+    padding: 16px 16px 16px !important;
     text-align: center;
-    text-decoration: none;
-}
-
-.room:hover {
-    background: #ee7538;
-    color: #fff;
-}
-
-#floor1 {
-    height: 50px;
-    width: 100px;
-    left: 20px;
-    line-height: 50px;
-    top: 20px;
-}
-
-#floor2 {
-    height: 50px;
-    width: 100px;
-    left: 20px;
-    line-height: 50px;
-    top: 100px;
 }
 
 md-card, md-button {
 	width: 250px;
+}
+
+md-card-image {
+  background: #0574ac;
+}
+
+.building-title {
+	color: #0574ac;
+	text-align: center;
 }

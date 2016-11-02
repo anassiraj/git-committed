@@ -1,0 +1,19 @@
+<body layout="column">
+    <div layout="row" flex style="height:850px;">
+        <div layout="column" flex id="content">
+	        <div class="flexbox-parent">
+	            <div layout="row" layout-align="center center" style="min-height: 850px;" layout-wrap>
+	            	<h1 style="width: 100%;text-align: center;">{{floor.building}}</h1><br /><br />
+                    <div ng-repeat="f in floor.floors">
+                        <md-card>
+                          <md-card-title >
+                            <md-card-title-text >
+                              <span class="md-headline">{{f.displayName}}</span>
+                          </md-card-title>
+                        </md-card>
+                    </div>
+	            </div>
+	        </div>
+        </div>
+    </div>
+</body>
