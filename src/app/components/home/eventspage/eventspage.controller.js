@@ -6,9 +6,12 @@ export default class EventsPageController {
 		
 		this.floor = $stateParams.currentFloor;
 
-		const eventData = firebaseServices.getData(`events/${this.floor}`);
+		this.building = $stateParams.currentBuilding;
+
+		const eventData = firebaseServices.getData(`buildings/${this.building}/floors/${this.floor}/events`);
 
 		$q.all([eventData]).then( (data) => {
+			console.log(data);
 			this.events = data[0];
 		});
 

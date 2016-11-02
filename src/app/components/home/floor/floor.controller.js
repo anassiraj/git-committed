@@ -14,6 +14,9 @@ export default class FloorController {
 	}
 
 	setFloor(floor) {
-		this.$state.go('eventspage', { 'currentFloor': floor });
+		this.$state.go('eventspage', { 
+			'currentFloor': floor,
+			'currentBuilding': this.building
+		});
 	}
 }
