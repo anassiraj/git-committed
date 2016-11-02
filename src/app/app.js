@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
+import lodash from 'lodash';
 import routing from './app.config';
 // import home from './components/home';
 import admin from './components/admin';
