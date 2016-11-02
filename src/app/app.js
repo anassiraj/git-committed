@@ -2,12 +2,13 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 import routing from './app.config';
-import home from './components/home';
+// import home from './components/home';
 import admin from './components/admin';
-import menu from './components/menu';
-import tasks from './components/tasks';
-import eventspage from './components/eventspage';
-import floor from './components/floor';
+// import menu from './components/menu';
+import tasks from './components/admin/tasks';
+import eventspage from './components/home/eventspage';
+import floor from './components/home/floor';
+import building from  './components/home/building';
 const firebase = require('firebase/app');
 // all 3 are optional and you only need to require them at the start
 require('firebase/auth');
@@ -39,7 +40,10 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor() {
+	constructor($rootScope) {
+
+		$rootScope.currentBuilding = null;
+
 		this.data = ['item1', 'item2'];
 
 		this.ref = ref;
@@ -70,14 +74,14 @@ class AppCtrl {
 		  // ...
 		});
 
-		
+
 	}
 }
 
 const MODULE_NAME = 'app';
 
 
-angular.module(MODULE_NAME, [uirouter, home, admin, menu, tasks, eventspage, floor, ngMaterial, fbs])
+angular.module(MODULE_NAME, [uirouter, admin, tasks, eventspage, floor, building, ngMaterial, fbs])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);
