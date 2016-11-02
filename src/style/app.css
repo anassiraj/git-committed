@@ -107,6 +107,7 @@ md-card md-card-title {
 }
 
 md-card, md-button {
+  cursor: pointer;
 	width: 250px;
   background-color: #f2f2f2;
 }
