@@ -96,6 +96,11 @@ md-list {
 
 /* Floors */
 
+.flexbox-parent h1 {
+  width: 100%;
+  text-align: center;
+}
+
 md-card md-card-title {
     padding: 16px 16px 16px !important;
     text-align: center;
@@ -103,6 +108,7 @@ md-card md-card-title {
 
 md-card, md-button {
 	width: 250px;
+  background-color: #f2f2f2;
 }
 
 md-card-image {
@@ -112,4 +118,16 @@ md-card-image {
 .building-title {
 	color: #0574ac;
 	text-align: center;
+}
+
+/* Buildings */
+
+.buildings {
+  text-align: center;
+}
+
+.icon-building-midsizedbuilding {
+  font-size: 100px;
+  font-style: normal;
+  color: #0574ac;
 }
