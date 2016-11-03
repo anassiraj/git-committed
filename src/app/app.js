@@ -20,7 +20,7 @@ import 'angularfire';
 import '../style/app.css';
 import 'angular-material/angular-material.css';
 import fbs from './app.firebaseServices';
-import moment from 'moment';
+import angularMoment from 'angular-moment';
 
 const config = {
 	apiKey: 'AIzaSyDp_CQgna5k7vyPW89PiSY5xnOQCT5QU1U',
@@ -90,7 +90,8 @@ angular.module(MODULE_NAME, [
 		floor,
 		building,
 		ngMaterial,
-		fbs
+		fbs,
+		angularMoment
 	])
 	.directive('app', app)
 	.config(routing)

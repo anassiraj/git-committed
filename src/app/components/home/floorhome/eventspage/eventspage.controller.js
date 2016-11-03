@@ -1,8 +1,8 @@
 export default class EventsPageController {
 
 	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog, $filter, events, moment) {
-		console.log(moment);
-		console.log(events);
+		console.log(moment());
+		console.log('baz');
 		this.todaysDate = new Date();
 		console.log(this.todaysDate);
 		this.events = filterEventsByDate(events, this.todaysDate);
