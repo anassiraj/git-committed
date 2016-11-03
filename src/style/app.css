@@ -76,6 +76,20 @@ md-card, md-button {
   background-color: #f2f2f2;
 }
 
+#calendar {
+  margin-top: 7px;
+}
+
+#events {
+  background-color: #0574ac;
+}
+
+#events md-card, #events md-button {
+  cursor: pointer;
+  width: inherit;
+  background-color: #f2f2f2;
+}
+
 md-card-image {
   background: #0574ac;
 }
@@ -98,14 +112,6 @@ md-card-image {
 }
 
 /* Calendar */
-
-.datepickerdemoBasicUsage md-content {
-    padding-bottom: 200px; }
-
-.datepickerdemoBasicUsage .validation-messages {
-    font-size: 11px;
-    color: darkred;
-    margin: 10px 0 0 25px; }
 
 .fixed-calendar {
   width: 340px;
