@@ -12,6 +12,7 @@ import menus from './components/home/floorhome/menus';
 import floor from './components/home/floor';
 import building from  './components/home/building';
 const firebase = require('firebase/app');
+
 // all 3 are optional and you only need to require them at the start
 require('firebase/auth');
 require('firebase/database');
