@@ -25,6 +25,17 @@ export default class EventsPageController {
 		    $mdDialog.show(confirm);
 		};
 
+		$scope.myDate = new Date();
+
+		$scope.minDate = new Date(
+			$scope.myDate.getFullYear(),
+			$scope.myDate.getMonth(),
+			$scope.myDate.getDate());
+
+		$scope.maxDate = new Date(
+			$scope.myDate.getFullYear(),
+			$scope.myDate.getMonth(),
+			$scope.myDate.getDate());
 
 		/* JUST test data to add events to database
 		var newEvent = {

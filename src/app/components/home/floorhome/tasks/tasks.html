@@ -1,28 +1,11 @@
-<div layout="column">
-	<div>&nbsp</div>
-</div>
-<div layout="rows">
-  <div flex="15"></div>
-  <div style="background: white;" flex>
-  	<md-input-container>
-  		<label>Create Tasks</label>
-  		<input type="text" name="name">
-  		<md-button class="" ng-click=""> 
-  			Submit
-  		</md-button>  	
-  	</md-input-container>
-  </div>
-  <div flex="15"></div>
-</div>
+<md-input-container>
+	<label>Create Tasks</label>
+	<input type="text" name="name">
+	<md-button class="" ng-click="">Submit</md-button>  	
+</md-input-container>
 <div ng-repeat="(key, values) in tasks.tasks">
-	<div>&nbsp</div>
-	<div layout="rows">
-		<div flex="15"></div>
-		<div flex="70" layout="column" style="background: white;">
-			<div flex><b>Name:</b> {{values.name}}</div>
-			<div flex><b>Type:</b> {{values.type}}</div>
-			<div flex><b>Description:</b> {{values.description}}</div>
-		</div>
-		<div flex="15"></div>
-	</div>
+<div flex="70" layout="column" style="background: white;">
+	<div flex><b>Name:</b> {{values.name}}</div>
+	<div flex><b>Type:</b> {{values.type}}</div>
+	<div flex><b>Description:</b> {{values.description}}</div>
 </div>

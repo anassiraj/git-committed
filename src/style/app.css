@@ -96,7 +96,7 @@ md-list {
 
 /* Floors */
 
-.flexbox-parent h1 {
+.flexbox-parent h1, .flexbox-parent h2 {
   width: 100%;
   text-align: center;
 }
@@ -131,4 +131,34 @@ md-card-image {
   font-size: 100px;
   font-style: normal;
   color: #0574ac;
+}
+
+/* Calendar */
+
+.datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+
+.datepickerdemoBasicUsage .validation-messages {
+    font-size: 11px;
+    color: darkred;
+    margin: 10px 0 0 25px; }
+
+.fixed-calendar {
+  width: 340px;
+  height: 340px;
+  display: block;
+}
+
+.fixed-calendar .md-calendar-scroll-mask {
+  width: 340px !important;
+}
+
+.fixed-calendar .md-virtual-repeat-scroller {
+  width: 340px !important;
+  height: 308px;
+  overflow: hidden !important;
+}
+
+ui-view {
+  background-color: #fff;
 }
