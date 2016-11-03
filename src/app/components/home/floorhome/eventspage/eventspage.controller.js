@@ -1,12 +1,12 @@
 export default class EventsPageController {
 
 	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog, $filter, events, moment) {
-		console.log(moment());
-		console.log('baz');
-		this.todaysDate = new Date();
-		console.log(this.todaysDate);
+		// console.log(moment().format("l"));
+
+		this.todaysDate = moment().format("l")
+		// console.log(this.todaysDate);
 		this.events = filterEventsByDate(events, this.todaysDate);
-		console.log(this.events);
+		// console.log(this.events);
 
 		function filterEventsByDate(events, date) {
 			console.log(events);
@@ -44,7 +44,7 @@ export default class EventsPageController {
 		    $mdDialog.show(confirm);
 		};
 
-		this.selectedDate = new Date();
+		this.selectedDate = this.todaysDate;
 
 
 
@@ -54,14 +54,10 @@ export default class EventsPageController {
 		// 	this.todaysDate.getDate()
 		// );
 
-		this.maxDate = new Date(
-			this.todaysDate.getFullYear() + 1,
-			this.todaysDate.getMonth(),
-			this.todaysDate.getDate()
-		);
+		this.maxDate = moment().add(1, 'y')
 
 		this.getDateEvents = function(date) {
-			console.log('Date changed to:', date.getTime());
+			// console.log('Date changed to:', date.getTime());
 			this.getEventsByDate(date);
 		}
 
@@ -83,7 +79,7 @@ export default class EventsPageController {
 	getEventsByDate(date) {
 		const eventData = this.firebaseServices.getData(`buildings/${this.$stateParams.currentBuilding}/floors/${this.$stateParams.currentFloor}/events`);
 		this.$q.all([eventData]).then( (data) => {
-			this.events = _.filter(data[0], (events) => events.eventDate === date.getTime());
+			this.events = _.filter(data[0], (events) => events.eventDate === date);
 		});
 	}
 
