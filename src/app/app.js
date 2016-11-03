@@ -19,7 +19,8 @@ require('firebase/storage');
 import 'angularfire';
 import '../style/app.css';
 import 'angular-material/angular-material.css';
-import fbs from './app.firebaseServices'
+import fbs from './app.firebaseServices';
+import moment from 'moment';
 
 const config = {
 	apiKey: 'AIzaSyDp_CQgna5k7vyPW89PiSY5xnOQCT5QU1U',
@@ -80,15 +81,15 @@ const MODULE_NAME = 'app';
 
 
 angular.module(MODULE_NAME, [
-		uirouter, 
-		admin, 
-		tasks, 
+		uirouter,
+		admin,
+		tasks,
 		floorhome,
 		eventspage,
-		menus, 
-		floor, 
-		building, 
-		ngMaterial, 
+		menus,
+		floor,
+		building,
+		ngMaterial,
 		fbs
 	])
 	.directive('app', app)

@@ -1,7 +1,7 @@
 <md-card ng-repeat="(key, values) in eventspage.events">
   <md-card-title>
     <md-card-title-text>
-      <span class="md-headline event-title">{{values.name}} </span>       
+      <span class="md-headline event-title">{{values.name}} </span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
@@ -10,7 +10,7 @@
       <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
   </md-card-content>
 </md-card>
-<md-calendar class="fixed-calendar" ng-model="myDate" md-min-date="minDate" md-max-date="maxDate"></md-calendar>
-<md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
+<md-calendar class="fixed-calendar" ng-model="eventspage.selectedDate" ng-click='eventspage.getDateEvents(eventspage.selectedDate)' md-min-date="eventspage.todaysDate" md-max-date="eventspage.maxDate"></md-calendar>
+<md-button class="md-icon-button md-primary" aria-label="Add" ng-click="eventspage.addEvent($event)">
   <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
 </md-button>

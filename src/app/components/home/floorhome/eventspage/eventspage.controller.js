@@ -1,18 +1,37 @@
 export default class EventsPageController {
 
-	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog) {
+	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog, $filter, events, moment) {
+		console.log(moment);
+		console.log(events);
+		this.todaysDate = new Date();
+		console.log(this.todaysDate);
+		this.events = filterEventsByDate(events, this.todaysDate);
+		console.log(this.events);
 
+		function filterEventsByDate(events, date) {
+			console.log(events);
+			console.log(date);
+			return _.filter(events, (events) => events.eventDate === date);
+		}
 		this.$state = $state;
-		
-		const eventData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
 
-		const selectedDay = '11/1/16';
+		this.$q = $q;
 
-		$q.all([eventData]).then( (data) => {
-			this.events = _.filter(data[0], (events) => events.eventDate === selectedDay);
-		});
+		this.firebaseServices = firebaseServices;
 
-		$scope.addEvent = function(ev){
+		this.$stateParams = $stateParams;
+
+		// const eventData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
+
+		const selectedDay = '11/3/16';
+
+		// $q.all([eventData]).then( (data) => {
+		// 	this.events = _.filter(data[0], (events) => events.eventDate === selectedDay);
+		// });
+
+
+
+		this.addEvent = function(ev){
 			var confirm = $mdDialog.prompt()
 		      .title('Add event')
 		      .textContent('This needs to be implemented.')
@@ -25,17 +44,26 @@ export default class EventsPageController {
 		    $mdDialog.show(confirm);
 		};
 
-		$scope.myDate = new Date();
+		this.selectedDate = new Date();
 
-		$scope.minDate = new Date(
-			$scope.myDate.getFullYear(),
-			$scope.myDate.getMonth(),
-			$scope.myDate.getDate());
 
-		$scope.maxDate = new Date(
-			$scope.myDate.getFullYear(),
-			$scope.myDate.getMonth(),
-			$scope.myDate.getDate());
+
+		// this.minDate = new Date(
+		// 	this.todaysDate.getFullYear(),
+		// 	this.todaysDate.getMonth(),
+		// 	this.todaysDate.getDate()
+		// );
+
+		this.maxDate = new Date(
+			this.todaysDate.getFullYear() + 1,
+			this.todaysDate.getMonth(),
+			this.todaysDate.getDate()
+		);
+
+		this.getDateEvents = function(date) {
+			console.log('Date changed to:', date.getTime());
+			this.getEventsByDate(date);
+		}
 
 		/* JUST test data to add events to database
 		var newEvent = {
@@ -51,8 +79,15 @@ export default class EventsPageController {
 		firebaseServices.pushData('/buildings/twoBell/floors/floor01/events', newEvent);
 		*/
 	}
-	
-	// showEventforDay(day){		
+
+	getEventsByDate(date) {
+		const eventData = this.firebaseServices.getData(`buildings/${this.$stateParams.currentBuilding}/floors/${this.$stateParams.currentFloor}/events`);
+		this.$q.all([eventData]).then( (data) => {
+			this.events = _.filter(data[0], (events) => events.eventDate === date.getTime());
+		});
+	}
+
+	// showEventforDay(day){
 	//  	const eventData = firebaseServices.filterData(path, key,value);
 	// }
 }
