@@ -1,7 +1,7 @@
 export default class BuildingController {
 	constructor($state, firebaseServices, $q) {
 
-		// this.$rootScope = $rootScope; 
+		// console.log('foo');
 
 		this.$state = $state;
 
