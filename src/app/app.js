@@ -9,6 +9,7 @@ import eventspage from './components/home/eventspage';
 import floor from './components/home/floor';
 import building from  './components/home/building';
 const firebase = require('firebase/app');
+
 // all 3 are optional and you only need to require them at the start
 require('firebase/auth');
 require('firebase/database');
@@ -76,7 +77,7 @@ class AppCtrl {
 const MODULE_NAME = 'app';
 
 
-angular.module(MODULE_NAME, [uirouter, admin, tasks, eventspage, floor, building, ngMaterial, fbs])
+angular.module(MODULE_NAME, [uirouter, admin, tasks, eventspage,floor, building, ngMaterial, fbs])
 	.directive('app', app)
 	.config(routing)
 	.controller('AppCtrl', AppCtrl);

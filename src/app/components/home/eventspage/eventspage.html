@@ -16,6 +16,12 @@
 </div>
 <div layout = 'column' layout-align='end end'>
     <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
-        <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
+        <md-icon md-svg-icon="/img/addIcon.svg" aria-label="..."></md-icon>
   </md-button>
+
+  <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
 </div>

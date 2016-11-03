@@ -25,35 +25,48 @@ export default class EventsPageController {
 		});
 
 		$scope.addEvent = function(ev){
-			var confirm = $mdDialog.prompt()
-		      .title('Add event')
-		      .textContent('This needs to be implemented.')
-		      .placeholder('Not done')
-		      .ariaLabel('Not done')
-		      .initialValue('Not Done')
-		      .targetEvent(ev)
-		      .ok('Okay!')
-		      .cancel('cancel');
-		    $mdDialog.show(confirm);
-		};
+			console.log(this.currentFloor);
+			$mdDialog.show({
+		      controller: DialogController,
+		      template: require('./addEvent.tmpl.html'),
+		      parent: angular.element(document.body),
+			  controllerAs: 'addEvent',
+		      targetEvent: ev,
+		      clickOutsideToClose:true,
+		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentFloor}
+		    })
+		    .then(function(answer) {
+		    	if(answer === 'add'){
+		    		$scope.status = 'Event add was successful'+answer;
+		    	}
+		    	else{
+		    		$scope.status = 'Event add cancelled';
+		    	}
 
-
-		/* JUST test data to add events to database
-		var newEvent = {
-			createdByUID: 'dr513h',
-			description: 'Testing events 3',
-			endTime: '11PM',
-			eventDate: '11/6/16',
-			location: 'Dereks Home',
-			name: 'Test Event 3',
-			startTime: '6 PM'
+		    }, function() {
+		      $scope.status = 'Event add cancelled.';
+		    });
 		}
+		
+		//Display Building : Floor
+		//Only add to floor
+		function DialogController($scope, $mdDialog, floor, building) {
+		    $scope.hide = function() {
+		      $mdDialog.hide();
+		    };
 
-		firebaseServices.pushData('/buildings/twoBell/floors/floor01/events', newEvent);
-		*/
+		    $scope.cancel = function() {
+		      $mdDialog.cancel();
+		    };
+
+		    console.log('Opening controller');
+
+		    $scope.test = 'Test Stuff';
+
+		    $scope.save = function() {
+		      console.log($scope.name);
+		      $mdDialog.hide();
+		    };
+		  }
 	}
-	
-	// showEventforDay(day){		
-	//  	const eventData = firebaseServices.filterData(path, key,value);
-	// }
 }
