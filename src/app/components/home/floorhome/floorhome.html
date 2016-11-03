@@ -1,4 +1,12 @@
-<h1>{{floorhome.buildingName}}</h1>
-<h2>{{floorhome.floorName}}</h2>
-<a ui-sref='.eventspage')">Events</a><a ui-sref='.menus')">Menus</a><a ui-sref=".tasks">Tasks</a>
-<ui-view></ui-view>
+<div class="flexbox-parent">
+	<h1>{{floorhome.buildingName}}</h1>
+	<h2>{{floorhome.floorName}}</h2>
+	<div layout="row" layout-align="center center">
+		<md-button ui-sref='.eventspage'>Events</md-button>
+		<md-button ui-sref='.menus'>Menus</md-button>
+		<md-button ui-sref='.tasks'>Tasks</md-button>
+	</div>
+	<div layout="row" layout-align="center center" flex>
+		<ui-view></ui-view>
+	</div>
+</div>
