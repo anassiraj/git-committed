@@ -33,15 +33,10 @@ export default class EventsPageController {
 			  controllerAs: 'addEvent',
 		      targetEvent: ev,
 		      clickOutsideToClose:true,
-		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentFloor}
+		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding}
 		    })
-		    .then(function(answer) {
-		    	if(answer === 'add'){
-		    		$scope.status = 'Event add was successful'+answer;
-		    	}
-		    	else{
-		    		$scope.status = 'Event add cancelled';
-		    	}
+		    .then(function(add) {
+		    	$scope.status = 'Adding event. Please refresh';
 
 		    }, function() {
 		      $scope.status = 'Event add cancelled.';
@@ -51,6 +46,9 @@ export default class EventsPageController {
 		//Display Building : Floor
 		//Only add to floor
 		function DialogController($scope, $mdDialog, floor, building) {
+		    $scope.floor = floor;
+		    $scope.building = building;
+
 		    $scope.hide = function() {
 		      $mdDialog.hide();
 		    };
@@ -59,12 +57,13 @@ export default class EventsPageController {
 		      $mdDialog.cancel();
 		    };
 
-		    console.log('Opening controller');
-
-		    $scope.test = 'Test Stuff';
-
-		    $scope.save = function() {
-		      console.log($scope.name);
+		    $scope.save = function(add) {
+		      console.log('Event Name' + $scope.addEvent.name);
+		      console.log('location' + $scope.addEvent.location);
+		      console.log('startDate' + $scope.addEvent.startDate);
+		      console.log('endDate' + $scope.addEvent.endDate);
+		      console.log('description' + $scope.addEvent.description);
+		      console.log('user' + $scope.addEvent.user);
 		      $mdDialog.hide();
 		    };
 		  }
