@@ -6,6 +6,11 @@ export default function routes($stateProvider) {
 		url: '/events',
 		template: require('./eventspage.html'),
 		controller: 'EventsPageController',
-		controllerAs: 'eventspage'
+		controllerAs: 'eventspage',
+    resolve: {
+      events: function(firebaseServices, $stateParams) {
+        return firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
+      }
+    }
 	});
 }

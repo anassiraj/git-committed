@@ -1,9 +1,9 @@
 <section id="events" layout="column" layout-gt-xs="row">
-  <md-calendar class="fixed-calendar" ng-model="myDate"></md-calendar>
+  <md-calendar class="fixed-calendar" ng-model="eventspage.selectedDate" ng-click='eventspage.filterEventsByNewDate(eventspage.selectedDate)' md-min-date="eventspage.todaysDate" md-max-date="eventspage.maxDate"></md-calendar>
   <div flex>
     <md-card layout="row" layout-align="end center">
         <div style="margin-left: 7px;" layout="row" layout-align="start center" flex>
-          Date: (Date goes here)
+          Date: {{eventspage.formatSelectedDateDisplay(eventspage.selectedDate)}}
         </div>
       <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
         <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
@@ -12,11 +12,11 @@
     <md-card ng-repeat="(key, values) in eventspage.events">
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline event-title">{{values.name}} </span>       
+          <span class="md-headline event-title">{{values.name}} </span>
         </md-card-title-text>
       </md-card-title>
       <md-card-content>
-          <p>{{values.eventDate}}</p>
+          <p>{{eventspage.convertToMomentSince(values.eventDate)}}</p>
           <p>{{values.description}}</p>
           <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
       </md-card-content>

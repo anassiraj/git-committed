@@ -1,18 +1,25 @@
 export default class EventsPageController {
 
-	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog) {
+	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog, $filter, events, moment) {
 
-		this.$state = $state;
-		
-		const eventData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
+		this.todaysDate = new Date();
 
-		const selectedDay = '11/1/16';
+		this.events = filterEventsByDate(events, this.todaysDate);
 
-		$q.all([eventData]).then( (data) => {
-			this.events = _.filter(data[0], (events) => events.eventDate === selectedDay);
-		});
+		this.filterEventsByNewDate = function (date) {
+			this.events = filterEventsByDate(events, date);
+		};
 
-		$scope.addEvent = function(ev){
+		this.convertToMomentSince = function (date) {
+			const momentDate = moment(date);
+			return moment().to(momentDate);
+		}
+
+		this.formatSelectedDateDisplay = function (date) {
+			return moment(date).format("dddd, MMMM Do YYYY");
+		}
+
+		this.addEvent = function(ev){
 			var confirm = $mdDialog.prompt()
 		      .title('Add event')
 		      .textContent('This needs to be implemented.')
@@ -25,34 +32,20 @@ export default class EventsPageController {
 		    $mdDialog.show(confirm);
 		};
 
-		$scope.myDate = new Date();
+		this.selectedDate = this.todaysDate;
 
-		$scope.minDate = new Date(
-			$scope.myDate.getFullYear(),
-			$scope.myDate.getMonth(),
-			$scope.myDate.getDate());
+		this.maxDate = new Date(
+			this.todaysDate.getFullYear() + 1,
+			this.todaysDate.getMonth(),
+			this.todaysDate.getDate()
+		);
 
-		$scope.maxDate = new Date(
-			$scope.myDate.getFullYear(),
-			$scope.myDate.getMonth(),
-			$scope.myDate.getDate());
-
-		/* JUST test data to add events to database
-		var newEvent = {
-			createdByUID: 'dr513h',
-			description: 'Testing events 3',
-			endTime: '11PM',
-			eventDate: '11/6/16',
-			location: 'Dereks Home',
-			name: 'Test Event 3',
-			startTime: '6 PM'
+		function filterEventsByDate(events, date) {
+			const momentDate = moment(date);
+			return _.filter(events, (events) => {
+				return moment(momentDate).isSame(moment(events.eventDate), 'day');
+			})
 		}
 
-		firebaseServices.pushData('/buildings/twoBell/floors/floor01/events', newEvent);
-		*/
 	}
-	
-	// showEventforDay(day){		
-	//  	const eventData = firebaseServices.filterData(path, key,value);
-	// }
 }
