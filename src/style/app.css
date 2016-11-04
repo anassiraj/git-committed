@@ -93,9 +93,15 @@ md-card:hover, md-button:hover {
   background: #0574ac;
 }
 
+/* Task Page */
+
+md-card.tasks {
+  width: auto;
+}
+
 button.md-raised.createButton {
   background: lightblue;
-  width: 250px;
+  width: 400px;
 }
 
 .building-title {
