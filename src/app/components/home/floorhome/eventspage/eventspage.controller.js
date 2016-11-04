@@ -1,18 +1,19 @@
 export default class EventsPageController {
 
 	constructor($state, $stateParams, firebaseServices, $q, $scope , $mdDialog, $filter, events, moment) {
-		// console.log(moment().format("l"));
 
-		this.todaysDate = moment().format("l")
-		// console.log(this.todaysDate);
+		this.todaysDate = new Date();
+
 		this.events = filterEventsByDate(events, this.todaysDate);
-		// console.log(this.events);
 
 		function filterEventsByDate(events, date) {
-			console.log(events);
 			console.log(date);
-			return _.filter(events, (events) => events.eventDate === date);
+			const momentDate = moment(date);
+			return _.filter(events, (events) => {
+				return moment(momentDate).isSame(moment(events.eventDate), 'day');
+			})
 		}
+
 		this.$state = $state;
 
 		this.$q = $q;
@@ -20,16 +21,6 @@ export default class EventsPageController {
 		this.firebaseServices = firebaseServices;
 
 		this.$stateParams = $stateParams;
-
-		// const eventData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
-
-		const selectedDay = '11/3/16';
-
-		// $q.all([eventData]).then( (data) => {
-		// 	this.events = _.filter(data[0], (events) => events.eventDate === selectedDay);
-		// });
-
-
 
 		this.addEvent = function(ev){
 			var confirm = $mdDialog.prompt()
@@ -46,34 +37,16 @@ export default class EventsPageController {
 
 		this.selectedDate = this.todaysDate;
 
-
-
-		// this.minDate = new Date(
-		// 	this.todaysDate.getFullYear(),
-		// 	this.todaysDate.getMonth(),
-		// 	this.todaysDate.getDate()
-		// );
-
-		this.maxDate = moment().add(1, 'y')
+		this.maxDate = new Date(
+			this.todaysDate.getFullYear() + 1,
+			this.todaysDate.getMonth(),
+			this.todaysDate.getDate()
+		);
 
 		this.getDateEvents = function(date) {
-			// console.log('Date changed to:', date.getTime());
 			this.getEventsByDate(date);
 		}
 
-		/* JUST test data to add events to database
-		var newEvent = {
-			createdByUID: 'dr513h',
-			description: 'Testing events 3',
-			endTime: '11PM',
-			eventDate: '11/6/16',
-			location: 'Dereks Home',
-			name: 'Test Event 3',
-			startTime: '6 PM'
-		}
-
-		firebaseServices.pushData('/buildings/twoBell/floors/floor01/events', newEvent);
-		*/
 	}
 
 	getEventsByDate(date) {
@@ -82,8 +55,4 @@ export default class EventsPageController {
 			this.events = _.filter(data[0], (events) => events.eventDate === date);
 		});
 	}
-
-	// showEventforDay(day){
-	//  	const eventData = firebaseServices.filterData(path, key,value);
-	// }
 }
