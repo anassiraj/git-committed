@@ -1,10 +1,9 @@
 <div class="flexbox-parent">
-	<h1>{{floorhome.buildingName}}</h1>
-	<h2>{{floorhome.floorName}}</h2>
-	<div layout="row" layout-align="center center">
-		<md-button ui-sref='.eventspage'>Events</md-button>
-		<md-button ui-sref='.menus'>Menus</md-button>
-		<md-button ui-sref='.tasks'>Tasks</md-button>
+	<h1 layout layout-align="center">{{floorhome.buildingName}} - {{floorhome.floorName}}</h1>
+	<div id="floornav" layout="row" layout-align="center">
+		<span class="nav-item" ng-class="{is_current: $state.current.controllerAs == 'eventspage'}" ui-sref='.eventspage'><i class="icon-misc-calendar"></i>Events</span>
+		<span class="nav-item" ng-class="{is_current: $state.current.controllerAs == 'menus'}" ui-sref='.menus'><i class="icon-retail-restaurant"></i>Menus</span>
+		<span class="nav-item" ng-class="{is_current: $state.current.controllerAs == 'tasks'}" ui-sref='.tasks'><i class="icon-misc-tools"></i>Tasks</span>
 	</div>
 	<div layout="row" layout-align="center center" flex>
 		<ui-view></ui-view>

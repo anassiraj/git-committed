@@ -15,6 +15,10 @@ export default class EventsPageController {
 			return moment().to(momentDate);
 		}
 
+		this.formatSelectedDateDisplay = function (date) {
+			return moment(date).format("dddd, MMMM Do YYYY");
+		}
+
 		this.addEvent = function(ev){
 			var confirm = $mdDialog.prompt()
 		      .title('Add event')
