@@ -5,12 +5,12 @@
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
-      <p>{{values.eventDate}}</p>
+      <p>{{eventspage.convertToMomentSince(values.eventDate)}}</p>
       <p>{{values.description}}</p>
       <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
   </md-card-content>
 </md-card>
-<md-calendar class="fixed-calendar" ng-model="eventspage.selectedDate" ng-click='eventspage.getDateEvents(eventspage.selectedDate)' md-min-date="eventspage.todaysDate" md-max-date="eventspage.maxDate"></md-calendar>
+<md-calendar class="fixed-calendar" ng-model="eventspage.selectedDate" ng-click='eventspage.filterEventsByNewDate(eventspage.selectedDate)' md-min-date="eventspage.todaysDate" md-max-date="eventspage.maxDate"></md-calendar>
 <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="eventspage.addEvent($event)">
   <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
 </md-button>

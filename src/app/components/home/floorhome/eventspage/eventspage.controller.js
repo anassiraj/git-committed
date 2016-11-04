@@ -6,21 +6,14 @@ export default class EventsPageController {
 
 		this.events = filterEventsByDate(events, this.todaysDate);
 
-		function filterEventsByDate(events, date) {
-			console.log(date);
+		this.filterEventsByNewDate = function (date) {
+			this.events = filterEventsByDate(events, date);
+		};
+
+		this.convertToMomentSince = function (date) {
 			const momentDate = moment(date);
-			return _.filter(events, (events) => {
-				return moment(momentDate).isSame(moment(events.eventDate), 'day');
-			})
+			return moment().to(momentDate);
 		}
-
-		this.$state = $state;
-
-		this.$q = $q;
-
-		this.firebaseServices = firebaseServices;
-
-		this.$stateParams = $stateParams;
 
 		this.addEvent = function(ev){
 			var confirm = $mdDialog.prompt()
@@ -43,16 +36,12 @@ export default class EventsPageController {
 			this.todaysDate.getDate()
 		);
 
-		this.getDateEvents = function(date) {
-			this.getEventsByDate(date);
+		function filterEventsByDate(events, date) {
+			const momentDate = moment(date);
+			return _.filter(events, (events) => {
+				return moment(momentDate).isSame(moment(events.eventDate), 'day');
+			})
 		}
 
-	}
-
-	getEventsByDate(date) {
-		const eventData = this.firebaseServices.getData(`buildings/${this.$stateParams.currentBuilding}/floors/${this.$stateParams.currentFloor}/events`);
-		this.$q.all([eventData]).then( (data) => {
-			this.events = _.filter(data[0], (events) => events.eventDate === date);
-		});
 	}
 }
