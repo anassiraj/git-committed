@@ -12,6 +12,14 @@ ui-view {
   width: 14rem;
 }
 
+#floornav {
+	margin-bottom: 10px;
+}
+
+#buildings {
+	height: calc(100vh + 200px);
+}
+
 #main-icons {
   	text-align: center;
   	font-size: 70px;
@@ -49,19 +57,6 @@ ui-view {
 	cursor: pointer;
 }
 
-md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
-    color: rgb(252,179,20);
-    background: rgb(255,179,20);
-}
-
-md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
-    color: #000;
-}
-
-md-list {
-    display: inline-block;
-}
-
 /* Floors */
 
 md-card md-card-title {
@@ -96,7 +91,7 @@ md-card-image {
 
 /* Buildings */
 
-.buildings {
+.buildings-icons {
   text-align: center;
 }
 
@@ -122,4 +117,51 @@ md-card-image {
   width: 340px !important;
   height: 308px;
   overflow: hidden !important;
+}
+
+md-calendar {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+/* Menu */
+
+.nav-item {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 22px;
+  padding: 10px 0;
+  color: #FFF;
+  position: relative;
+  -webkit-transition: all 100ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 100ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.nav-item:after {
+  content: "";
+  height: 3px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  -webkit-transition: all 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: #FFF;
+}
+.nav-item.is_current {
+  border-bottom: 3px solid #fff;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+  border-bottom: 3px solid #fff;
+}
+
+.nav-item i {
+  padding-right: 5px;
+  font-style: normal;
+  vertical-align: top;
 }

@@ -13,9 +13,7 @@ export default class FloorHomeController {
 		$q.all([floorData, buildingData]).then( (data) => {
 			this.buildingName = data[1]['displayName'];
 			this.floorName = data[0]['displayName'];
-			// this.events = _.filter(data[0], function(events) {
-			// 	return (events.eventDate == selectedDay);
-			// });
+			$scope.$state = $state;
 		});
 	}
 

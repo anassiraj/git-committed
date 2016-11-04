@@ -1,12 +1,14 @@
 <section id="events" layout="column" layout-gt-xs="row">
   <md-calendar class="fixed-calendar" ng-model="myDate"></md-calendar>
   <div flex>
-    Test Here
-    <div layout="row" layout-align="end center">
+    <md-card layout="row" layout-align="end center">
+        <div style="margin-left: 7px;" layout="row" layout-align="start center" flex>
+          Date: (Date goes here)
+        </div>
       <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
         <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
       </md-button>
-    </div>
+    </md-card>
     <md-card ng-repeat="(key, values) in eventspage.events">
       <md-card-title>
         <md-card-title-text>
