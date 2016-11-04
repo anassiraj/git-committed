@@ -1,11 +1,10 @@
-<md-input-container>
-	<label>Create Tasks</label>
-	<input type="text" name="name">
-	<md-button class="" ng-click="">Submit</md-button>  	
-</md-input-container>
-<div ng-repeat="(key, values) in tasks.tasks">
-<div flex="70" layout="column" style="background: white;">
-	<div flex><b>Name:</b> {{values.name}}</div>
-	<div flex><b>Type:</b> {{values.type}}</div>
-	<div flex><b>Description:</b> {{values.description}}</div>
-</div>
+<md-button class="md-raised createButton">Create Task</md-button>
+<md-card ng-repeat="(key, values) in tasks.tasks">
+	<md-card-title>
+		<span class="md-headline event-title">{{values.name}} </span>
+	</md-card-title>
+	<md-card-content>
+		<div flex><b>Type:</b> {{values.type}}</div>
+		<div flex><b>Description:</b> {{values.description}}</div>
+	</md-card-content>
+</md-card>
