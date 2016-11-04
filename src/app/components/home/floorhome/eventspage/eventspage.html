@@ -1,11 +1,12 @@
 <section id="events" layout="column" layout-gt-xs="row">
-  <div id="calendar">
-    <md-calendar class="fixed-calendar" ng-model="myDate"></md-calendar>
-    <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
-      <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
-    </md-button>
-  </div>
+  <md-calendar class="fixed-calendar" ng-model="myDate"></md-calendar>
   <div flex>
+    Test Here
+    <div layout="row" layout-align="end center">
+      <md-button class="md-icon-button md-primary" aria-label="Add" ng-click="addEvent($event)">
+        <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
+      </md-button>
+    </div>
     <md-card ng-repeat="(key, values) in eventspage.events">
       <md-card-title>
         <md-card-title-text>

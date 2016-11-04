@@ -4,6 +4,10 @@ html, body, #content {
 	background-color: #0574ac;
 }
 
+ui-view {
+  background-color: #fff;
+}
+
 .md-title img {
   width: 14rem;
 }
@@ -60,11 +64,6 @@ md-list {
 
 /* Floors */
 
-.flexbox-parent h1, .flexbox-parent h2 {
-  width: 100%;
-  text-align: center;
-}
-
 md-card md-card-title {
     padding: 16px 16px 16px !important;
     text-align: center;
@@ -74,10 +73,6 @@ md-card, md-button {
   cursor: pointer;
 	width: 250px;
   background-color: #f2f2f2;
-}
-
-#calendar {
-  margin-top: 7px;
 }
 
 #events {
@@ -127,8 +122,4 @@ md-card-image {
   width: 340px !important;
   height: 308px;
   overflow: hidden !important;
-}
-
-ui-view {
-  background-color: #fff;
 }

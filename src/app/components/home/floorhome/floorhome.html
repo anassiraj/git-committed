@@ -1,9 +1,9 @@
 <div class="flexbox-parent">
-	<h1>{{floorhome.buildingName}} - {{floorhome.floorName}}</h1>
+	<h1 layout layout-align="center">{{floorhome.buildingName}} - {{floorhome.floorName}}</h1>
 	<div layout="row" layout-align="center center">
-		<md-button ui-sref='.eventspage'>Events</md-button>
-		<md-button ui-sref='.menus'>Menus</md-button>
-		<md-button ui-sref='.tasks'>Tasks</md-button>
+		<md-button ui-sref='.eventspage' class="md-raised">Events</md-button>
+		<md-button ui-sref='.menus' class="md-raised">Menus</md-button>
+		<md-button ui-sref='.tasks' class="md-raised">Tasks</md-button>
 	</div>
 	<div layout="row" layout-align="center center" flex>
 		<ui-view></ui-view>
