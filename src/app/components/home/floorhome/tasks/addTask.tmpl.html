@@ -1,5 +1,5 @@
 <md-dialog aria-label="Add Event">
-    <md-toolbar>
+    <md-toolbar style="background-color: lightblue;">
       <div class="md-toolbar-tools">
         <h2>Add Task to {{building}} : {{floor}}</h2>
         <span flex></span>
@@ -8,21 +8,13 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-dialog-content style="max-width:800px;max-height:900px; " >
+    <md-dialog-content style="max-width:800px;max-height:900px;" >
         <md-input-container>
           <label>Task Name</label>
-          <input type="text" md-maxlength="30" required name="name" ng-model="addEvent.name">
+          <input type="text" md-maxlength="30" required name="name" ng-model="addTask.name">
           <div ng-messages="addTask.name.$error">
             <div ng-message="required">This is required.</div>
             <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
-          </div>
-        </md-input-container>
-        <br>
-        <md-input-container>
-          <md-datepicker required name="startDate" ng-model="addTask.startDate"
-                         md-placeholder="Start Date"></md-datepicker>
-          <div ng-messages="addEvent.startDate.$error">
-            <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
         <br>
@@ -35,9 +27,9 @@
         </md-input-container>
         <br>
         <md-input-container>
-          <label>Location</label>
-          <input ng-model="addTask.location">
-          <div ng-messages="addTask.location.$error">
+          <label>Type</label>
+          <input ng-model="addTask.type">
+          <div ng-messages="addTask.type.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
@@ -46,6 +38,14 @@
           <label>UID</label>
           <input ng-model="addTask.user">
           <div ng-messages="addTask.user.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <label>PIN</label>
+          <input ng-model="addTask.pin">
+          <div ng-messages="addTask.pin.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>

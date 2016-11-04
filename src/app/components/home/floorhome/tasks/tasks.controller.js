@@ -3,14 +3,6 @@ export default class TasksController {
 	constructor($state, $stateParams, firebaseServices, $q, $scope, $mdDialog) {
 
 		this.$state = $state;
-
-		// var temp = {
-		// 	name: 'Broken chair',
-		// 	type: 'Work Area',
-		// 	description: 'Chair next to elevator'
-		// };
-
-		// firebaseServices.pushData('/buildings/twoBell/floors/floor01/tasks/', temp);
 		
 		const taskData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/tasks`);
 
@@ -20,7 +12,7 @@ export default class TasksController {
 		});
 
 		$scope.addTask = function(ev){
-			console.log(this.currentFloor);
+			console.log($stateParams.currentFloor);
 			$mdDialog.show({
 		      controller: DialogController,
 		      template: require('./addTask.tmpl.html'),
@@ -52,13 +44,21 @@ export default class TasksController {
 		      $mdDialog.cancel();
 		    };
 
-		    $scope.save = function(add) {
-		      console.log('Event Name' + $scope.addEvent.name);
-		      console.log('location' + $scope.addEvent.location);
-		      console.log('startDate' + $scope.addEvent.startDate);
-		      console.log('endDate' + $scope.addEvent.endDate);
-		      console.log('description' + $scope.addEvent.description);
-		      console.log('user' + $scope.addEvent.user);
+		    $scope.save = function(add) {	
+		      var jsonObj = {
+		      	name: $scope.addTask.name,
+		      	description: $scope.addTask.description,
+		      	type: $scope.addTask.type,
+		      	user: $scope.addTask.user,
+		      	pin: $scope.addTask.pin
+		      };
+
+		      var path = '/buildings/' + $stateParams.currentBuilding 
+		      		   + '/floors/' + $stateParams.currentFloor
+		      		   + '/tasks/';
+
+		      firebaseServices.pushData(path, jsonObj);
+		      $mdDialog.hide();
 		      $mdDialog.hide();
 		    };
 		}
