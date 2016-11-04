@@ -1,4 +1,4 @@
-<md-button class="md-raised createButton">Create Task</md-button>
+<md-button class="md-raised createButton" ng-click="addTask($event)">Create Task</md-button>
 <md-card ng-repeat="(key, values) in tasks.tasks">
 	<md-card-title>
 		<span class="md-headline event-title">{{values.name}} </span>

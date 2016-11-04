@@ -1,0 +1,62 @@
+<md-dialog aria-label="Add Event">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add Task to {{building}} : {{floor}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:900px; " >
+        <md-input-container>
+          <label>Task Name</label>
+          <input type="text" md-maxlength="30" required name="name" ng-model="addEvent.name">
+          <div ng-messages="addTask.name.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+          </div>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <md-datepicker required name="startDate" ng-model="addTask.startDate"
+                         md-placeholder="Start Date"></md-datepicker>
+          <div ng-messages="addEvent.startDate.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <label>Description</label>
+          <input ng-model="addTask.description">
+          <div ng-messages="addTask.description.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <label>Location</label>
+          <input ng-model="addTask.location">
+          <div ng-messages="addTask.location.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <label>UID</label>
+          <input ng-model="addTask.user">
+          <div ng-messages="addTask.user.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="save('add')" style="margin-right:20px;">
+        Save
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>
