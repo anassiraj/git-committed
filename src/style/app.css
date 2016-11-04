@@ -42,6 +42,11 @@ ui-view {
     border: 0;
 }
 
+#login-button {
+  font-size: 2em;
+  color: white;
+}
+
 .circle-icon {
     background: #f2f2f2;
     width: 100px;
