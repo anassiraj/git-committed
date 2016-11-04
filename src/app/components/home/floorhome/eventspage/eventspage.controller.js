@@ -20,7 +20,7 @@ export default class EventsPageController {
 			return moment(date).format("dddd, MMMM Do YYYY");
 		}
 
-				$scope.addEvent = function(ev){
+		$scope.addEvent = function(ev){
 			console.log(this.currentFloor);
 			$mdDialog.show({
 		      controller: DialogController,
