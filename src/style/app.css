@@ -84,8 +84,13 @@ md-card:hover, md-button:hover {
   background-color: #f2f2f2;
 }
 
-md-card-image {
+.md-card-image {
   background: #0574ac;
+}
+
+button.md-raised.createButton {
+  background: lightblue;
+  width: 250px;
 }
 
 .building-title {
