@@ -5,7 +5,8 @@ export default class EventsPageController {
 		this.todaysDate = new Date();
 
 		this.events = filterEventsByDate(events, this.todaysDate);
-
+		this.currentFloor = $stateParams.currentFloor;
+		this.currentBuilding = $stateParams.currentBuilding;
 		this.filterEventsByNewDate = function (date) {
 			this.events = filterEventsByDate(events, date);
 		};
@@ -19,18 +20,49 @@ export default class EventsPageController {
 			return moment(date).format("dddd, MMMM Do YYYY");
 		}
 
-		this.addEvent = function(ev){
-			var confirm = $mdDialog.prompt()
-		      .title('Add event')
-		      .textContent('This needs to be implemented.')
-		      .placeholder('Not done')
-		      .ariaLabel('Not done')
-		      .initialValue('Not Done')
-		      .targetEvent(ev)
-		      .ok('Okay!')
-		      .cancel('cancel');
-		    $mdDialog.show(confirm);
-		};
+		$scope.addEvent = function(ev){
+			console.log(this.currentFloor);
+			$mdDialog.show({
+		      controller: DialogController,
+		      template: require('./addEvent.tmpl.html'),
+		      parent: angular.element(document.body),
+			  controllerAs: 'addEvent',
+		      targetEvent: ev,
+		      clickOutsideToClose:true,
+		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding}
+		    })
+		    .then(function(add) {
+		    	$scope.status = 'Adding event. Please refresh';
+
+		    }, function() {
+		      $scope.status = 'Event add cancelled.';
+		    });
+		}
+		
+		//Display Building : Floor
+		//Only add to floor
+		function DialogController($scope, $mdDialog, floor, building) {
+		    $scope.floor = floor;
+		    $scope.building = building;
+
+		    $scope.hide = function() {
+		      $mdDialog.hide();
+		    };
+
+		    $scope.cancel = function() {
+		      $mdDialog.cancel();
+		    };
+
+		    $scope.save = function(add) {
+		      console.log('Event Name' + $scope.addEvent.name);
+		      console.log('location' + $scope.addEvent.location);
+		      console.log('startDate' + $scope.addEvent.startDate);
+		      console.log('endDate' + $scope.addEvent.endDate);
+		      console.log('description' + $scope.addEvent.description);
+		      console.log('user' + $scope.addEvent.user);
+		      $mdDialog.hide();
+		    };
+		}
 
 		this.selectedDate = this.todaysDate;
 
