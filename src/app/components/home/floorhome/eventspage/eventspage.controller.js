@@ -21,9 +21,8 @@ export default class EventsPageController {
 		}
 
 		$scope.addEvent = function(ev){
-			console.log(this.currentFloor);
 			$mdDialog.show({
-		      controller: DialogController,
+		      controller: AddEventController,
 		      template: require('./addEvent.tmpl.html'),
 		      parent: angular.element(document.body),
 			  controllerAs: 'addEvent',
@@ -37,35 +36,6 @@ export default class EventsPageController {
 		    }, function() {
 		      $scope.status = 'Event add cancelled.';
 		    });
-		}
-		
-		//Display Building : Floor
-		//Only add to floor
-		function DialogController($scope, $mdDialog, floor, building) {
-		    $scope.floor = floor;
-		    $scope.building = building;
-
-		    $scope.hide = function() {
-		      $mdDialog.hide();
-		    };
-
-		    $scope.cancel = function() {
-		      $mdDialog.cancel();
-		    };
-
-		    $scope.save = function(add) {
-		      var data = ({
-		      	'createdByUID': $scope.addEvent.user, 
-		      	'description' : $scope.addEvent.description,
-		      	'startTime': $scope.addEvent.startTime,
-		      	'endTime': $scope.addEvent.endTime,
-		      	'eventDate': $scope.addEvent.eventDate,
-		      	'name' : $scope.addEvent.name,
-		      	'location' : $scope.addEvent.location
-		      	});
-				firebaseServices.pushData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`,data);
-		      $mdDialog.hide();
-		    };
 		}
 
 		this.selectedDate = this.todaysDate;
@@ -81,6 +51,33 @@ export default class EventsPageController {
 			return _.filter(events, (events) => {
 				return moment(momentDate).isSame(moment(events.eventDate), 'day');
 			})
+		}
+
+		function AddEventController($scope, $mdDialog, floor, building) {
+		    $scope.floor = floor;
+		    $scope.building = building;
+
+		    $scope.hide = function() {
+		      $mdDialog.hide();
+		    };
+
+		    $scope.cancel = function() {
+		      $mdDialog.cancel();
+		    };
+
+		    $scope.save = function(add) {
+		      var data = ({
+		      	'createdByUID': $scope.addEvent.user,
+		      	'description' : $scope.addEvent.description,
+		      	'startTime': $scope.addEvent.startTime,
+		      	'endTime': $scope.addEvent.endTime,
+		      	'eventDate': $scope.addEvent.eventDate.getTime(),
+		      	'name' : $scope.addEvent.name,
+		      	'location' : $scope.addEvent.location
+		      	});
+					firebaseServices.pushData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`,data);
+		      $mdDialog.hide();
+		    };
 		}
 
 	}
