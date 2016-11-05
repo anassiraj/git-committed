@@ -44,7 +44,8 @@ md-card:hover, md-button:hover {
 
 #login-button {
 	font-size: 2em;
- 	color: white;
+	color: white;
+}
 
 #events md-card, #events md-button {
   cursor: pointer;
@@ -148,36 +149,6 @@ md-calendar {
 .nav-item i {
   padding-right: 5px;
   font-style: normal;
-<<<<<<< HEAD
-}
-
-.nav-item i:before {
-	position: relative;
-    top: -3px;
-}
-
-.tasks i {
-	font-style: normal;
-}
-
-.icon-controls-x-closePRIMARY {
-	color: #b30a3c;
-}
-
-.icon-misc-pen {
-	color: lightblue;
-}
-
-#main-nav i {
-	font-style: normal;
-	font-size: 35px;
-	color: #fff;
-  cursor: pointer;
-}
-
-.md-title {
-  cursor: pointer;
-  vertical-align: top;
 }
 
 .nav-item i:before {
@@ -207,4 +178,3 @@ md-calendar {
 .md-title {
   cursor: pointer;
 }
->>>>>>> dev
