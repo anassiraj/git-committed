@@ -1,5 +1,5 @@
 <md-content style="background-color: #0574ac;">
-	<md-button class="md-raised createButton" ng-click="addTask($event)">Create Task</md-button>
+	<md-button class="md-raised createButton" ng-click="addTask(key, values.pin, $event)">Create Task</md-button>
 	<md-card class="tasks" ng-repeat="(key, values) in tasks.tasks">
 		<md-card-title>
 			<span class="md-headline event-title">{{values.name}} </span>
