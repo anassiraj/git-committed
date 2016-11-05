@@ -7,6 +7,7 @@ import routing from './app.config';
 import floorhome from './components/home/floorhome';
 import eventspage from './components/home/floorhome/eventspage';
 import tasks from './components/home/floorhome/tasks';
+import data from './components/home/floorhome/data';
 import menus from './components/home/floorhome/menus';
 import floor from './components/home/floor';
 import building from  './components/home/building';
@@ -83,6 +84,7 @@ const MODULE_NAME = 'app';
 angular.module(MODULE_NAME, [
 		uirouter,
 		tasks,
+		data,
 		floorhome,
 		eventspage,
 		menus,
