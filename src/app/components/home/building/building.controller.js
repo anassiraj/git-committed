@@ -7,6 +7,13 @@ export default class BuildingController {
 		const buildingsData = firebaseServices.getData('buildings');
 
 		$q.all([buildingsData]).then( (data) => {
+			console.log(data[0]);
+			_.each(data[0], function(values, key) {
+				values.key = key;
+			});
+			data[0] = _.sortBy(data[0], function(n) {
+				return n.id
+			});
 			this.buildings = data[0];
 		});
 

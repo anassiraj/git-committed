@@ -1,7 +1,7 @@
 <div layout="column" flex id="content">
   <div class="flexbox-parent">
       <div layout="row" id="buildings" layout-align="center center" layout-wrap>
-            <md-card class='building-card' ng-repeat="(key, values) in building.buildings" ng-click="building.setBuilding(key)">
+            <md-card class='building-card' ng-repeat="(key, values) in building.buildings" ng-click="building.setBuilding(values.key)">
 
             <div class="buildings-icons">
               <i class="icon-building-midsizedbuilding"></i>
