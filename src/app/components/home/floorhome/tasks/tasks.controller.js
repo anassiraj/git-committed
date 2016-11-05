@@ -23,18 +23,40 @@ export default class TasksController {
 		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding}
 		    })
 		    .then(function(add) {
-		    	$scope.status = 'Adding event. Please refresh';
+		    	$scope.status = 'Adding task. Please refresh';
 
 		    }, function() {
-		      $scope.status = 'Event add cancelled.';
+		      $scope.status = 'Task add cancelled.';
+		    });
+		}
+
+		$scope.deleteTask = function(taskKey, userPin, $event) {
+			console.log($event);
+			$mdDialog.show({
+		      controller: DialogController,
+		      template: require('./deleteTask.tmpl.html'),
+		      parent: angular.element(document.body),
+			  controllerAs: 'deleteTask',
+		      targetEvent: $event,
+		      clickOutsideToClose:true,
+		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding,
+		      	userPin: userPin, taskKey: taskKey}
+		    })
+		    .then(function(del) {
+		    	$scope.status = 'Deleting event. Please refresh';
+
+		    }, function() {
+		      $scope.status = 'Task Delete cancelled.';
 		    });
 		}
 		
 		//Display Building : Floor
 		//Only add to floor
-		function DialogController($scope, $mdDialog, floor, building) {
+		function DialogController($scope, $mdDialog, floor, building, userPin, taskKey) {
 		    $scope.floor = floor;
 		    $scope.building = building;
+		    $scope.userPin = userPin;
+		    $scope.taskKey = taskKey;
 
 		    $scope.hide = function() {
 		      $mdDialog.hide();
@@ -42,6 +64,18 @@ export default class TasksController {
 
 		    $scope.cancel = function() {
 		      $mdDialog.cancel();
+		    };
+
+		    $scope.delete = function(pin) {
+		    	if ($scope.userPin === pin) {
+		    		var path = '/buildings/' + $scope.building 
+		      		   		 + '/floors/' + $scope.floor
+		      		   		 + '/tasks/' + $scope.taskKey;
+		    		firebaseServices.removeData(path);
+		    		$mdDialog.hide();
+		    	} else {
+		    		console.log('PIN DOES NOT MATCH');
+		    	}
 		    };
 
 		    $scope.save = function(add) {	
@@ -53,8 +87,8 @@ export default class TasksController {
 		      	pin: $scope.addTask.pin
 		      };
 
-		      var path = '/buildings/' + $stateParams.currentBuilding 
-		      		   + '/floors/' + $stateParams.currentFloor
+		      var path = '/buildings/' + $scope.building 
+		      		   + '/floors/' + $scope.floor
 		      		   + '/tasks/';
 
 		      firebaseServices.pushData(path, jsonObj);
