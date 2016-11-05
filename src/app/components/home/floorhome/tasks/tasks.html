@@ -8,7 +8,7 @@
 			<div flex><b>Type:</b> {{values.type}}</div>
 			<div flex><b>Description:</b> {{values.description}}</div>
 			<i class="icon-misc-pen"></i>
-			<i class="icon-controls-x-closePRIMARY"></i>
+			<i class="icon-controls-x-closePRIMARY" ng-click="deleteTask(key, values.pin, $event)"></i>
 		</md-card-content>
 	</md-card>
 </md-content>
