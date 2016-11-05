@@ -96,22 +96,32 @@ export default class TasksController {
 
 		    /* Deletes existing task */
 		    $scope.delete = function(pin) {
-		    	if ($scope.userPin === pin) {
-		    		console.log($scope.userPin + '   ' + pin);
-		    		var path = '/buildings/' + $scope.building 
-		      		   		 + '/floors/' + $scope.floor
-		      		   		 + '/tasks/' + $scope.taskKey;
-		    		firebaseServices.removeData(path);
-		    		console.log($stateParams.admin);
-		    		$mdDialog.hide();
-		    	} else {
-		    		console.log('PIN DOES NOT MATCH');
-		    	}
+		    	var uid = firebaseServices.getCurrentUserUid();
+		    	var isAdmin = firebaseServices.isAdmin(uid);
+
+		    	$q.all([isAdmin]).then( (data) => {
+					if ($scope.userPin === pin || data[0]) {
+			    		var path = '/buildings/' + $scope.building 
+			      		   		 + '/floors/' + $scope.floor
+			      		   		 + '/tasks/' + $scope.taskKey;
+			    		firebaseServices.removeData(path);
+			    		$mdDialog.hide();
+			    	} else {
+			    		console.log('PIN DOES NOT MATCH');
+			    	}
+				});
 		    };
 
 		    /* Edits existing task */
 		    $scope.edit = function(pin) {
-		        if ($scope.userPin === pin) {
+		    	var uid = firebaseServices.getCurrentUserUid();
+		    	var isAdmin = firebaseServices.isAdmin(uid);
+
+		    	$q.all([isAdmin]).then( (data) => {
+					console.log(data);
+				});
+
+		        if ($scope.userPin === pin || isAdmin) {
 		      	  var jsonObj = {
 			      	  name: $scope.editTask.name,
 			      	  description: $scope.editTask.description,

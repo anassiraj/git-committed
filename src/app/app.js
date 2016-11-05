@@ -63,11 +63,9 @@ class AppCtrl {
 		    console.log('User changed');
 		    const isAnonymous = user.isAnonymous;
 		    const uid = user.uid;
+		    console.log(user.email);
 		  } else {
 		  	// Admin signs out.
-
-		  	$rootScope.admin = false;
-
 		    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 			  var errorCode = error.code;
 			  var errorMessage = error.message;
@@ -115,6 +113,10 @@ class AppCtrl {
 		    		$mdDialog.hide();
 		    	} 
 		    };
+
+		    $scope.signout = function() {
+		    	firebaseServices.signout();
+		    }
 
 		}
 	}
