@@ -1,6 +1,5 @@
 export default class BuildingController {
-	constructor($state, firebaseServices, $q) {
-
+	constructor($state, $stateParams, firebaseServices, $q) {
 
 		this.$state = $state;
 

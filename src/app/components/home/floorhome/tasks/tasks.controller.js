@@ -1,6 +1,6 @@
 export default class TasksController {
 
-	constructor($state, $stateParams, firebaseServices, $q, $scope, $mdDialog) {
+	constructor($state, $stateParams, firebaseServices, $q, $rootScope, $scope, $mdDialog) {
 
 		this.$state = $state;
 		
@@ -102,6 +102,7 @@ export default class TasksController {
 		      		   		 + '/floors/' + $scope.floor
 		      		   		 + '/tasks/' + $scope.taskKey;
 		    		firebaseServices.removeData(path);
+		    		console.log($stateParams.admin);
 		    		$mdDialog.hide();
 		    	} else {
 		    		console.log('PIN DOES NOT MATCH');
