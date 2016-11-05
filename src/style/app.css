@@ -42,6 +42,11 @@ md-card:hover, md-button:hover {
   background-color: #0574ac;
 }
 
+#login-button {
+	font-size: 2em;
+	color: white;
+}
+
 #events md-card, #events md-button {
   cursor: pointer;
   width: inherit;
