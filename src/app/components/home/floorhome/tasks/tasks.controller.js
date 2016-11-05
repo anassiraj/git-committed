@@ -118,25 +118,23 @@ export default class TasksController {
 		    	var isAdmin = firebaseServices.isAdmin(uid);
 
 		    	$q.all([isAdmin]).then( (data) => {
-					console.log(data);
+					if ($scope.userPin === pin || data[0]) {
+			      	  var jsonObj = {
+				      	  name: $scope.editTask.name,
+				      	  description: $scope.editTask.description,
+				      	  type: $scope.editTask.type,
+				      	  pin: $scope.userPin
+			      	  };
+
+			      	  var path = '/buildings/' + $scope.building 
+			      		   	   + '/floors/' + $scope.floor
+			      		   	   + '/tasks/' + $scope.taskKey;
+			      	  firebaseServices.updateData(path, jsonObj);
+			      	  $mdDialog.hide();
+			        } else {
+			      	  console.log('PIN DOES NOT MATCH');
+			        }
 				});
-
-		        if ($scope.userPin === pin || isAdmin) {
-		      	  var jsonObj = {
-			      	  name: $scope.editTask.name,
-			      	  description: $scope.editTask.description,
-			      	  type: $scope.editTask.type,
-			      	  pin: $scope.userPin
-		      	  };
-
-		      	  var path = '/buildings/' + $scope.building 
-		      		   	   + '/floors/' + $scope.floor
-		      		   	   + '/tasks/' + $scope.taskKey;
-		      	  firebaseServices.updateData(path, jsonObj);
-		      	  $mdDialog.hide();
-		        } else {
-		      	  console.log('PIN DOES NOT MATCH');
-		        }
 		    };
 
 		    /* Addes new task to the floor */
