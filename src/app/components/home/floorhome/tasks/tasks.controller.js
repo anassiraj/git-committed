@@ -11,16 +11,16 @@ export default class TasksController {
 			console.log(data);
 		});
 
-		$scope.addTask = function(ev){
-			console.log($stateParams.currentFloor);
+		$scope.addTask = function(taskKey, userPin, $event){
 			$mdDialog.show({
 		      controller: DialogController,
 		      template: require('./addTask.tmpl.html'),
 		      parent: angular.element(document.body),
 			  controllerAs: 'addTask',
-		      targetEvent: ev,
+		      targetEvent: $event,
 		      clickOutsideToClose:true,
-		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding}
+		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding,
+		      	userPin: userPin, taskKey: taskKey}
 		    })
 		    .then(function(add) {
 		    	$scope.status = 'Adding task. Please refresh';
@@ -31,7 +31,6 @@ export default class TasksController {
 		}
 
 		$scope.deleteTask = function(taskKey, userPin, $event) {
-			console.log($event);
 			$mdDialog.show({
 		      controller: DialogController,
 		      template: require('./deleteTask.tmpl.html'),
