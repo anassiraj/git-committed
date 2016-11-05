@@ -54,20 +54,16 @@ export default class EventsPageController {
 		    };
 
 		    $scope.save = function(add) {
-		      const momentStartDate = moment($scope.addEvent.startDate).format("dddd, MMMM Do YYYY");
-		      const momentEndDate = moment($scope.addEvent.endDate).format("dddd, MMMM Do YYYY");
-		      console.log(momentStartDate);
 		      var data = ({
 		      	'createdByUID': $scope.addEvent.user, 
 		      	'description' : $scope.addEvent.description,
-		      	'startTime': momentStartDate,
-		      	'endTime': momentEndDate,
-		      	'eventDate': momentStartDate,
+		      	'startTime': $scope.addEvent.startTime,
+		      	'endTime': $scope.addEvent.endTime,
+		      	'eventDate': $scope.addEvent.eventDate,
 		      	'name' : $scope.addEvent.name,
 		      	'location' : $scope.addEvent.location
 		      	});
 				firebaseServices.pushData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`,data);
-
 		      $mdDialog.hide();
 		    };
 		}
