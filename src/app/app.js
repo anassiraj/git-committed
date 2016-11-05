@@ -3,7 +3,6 @@ import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 import lodash from 'lodash';
 import routing from './app.config';
-import admin from './components/admin';
 // import tasks from './components/admin/tasks';
 import floorhome from './components/home/floorhome';
 import eventspage from './components/home/floorhome/eventspage';
@@ -83,7 +82,6 @@ const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [
 		uirouter,
-		admin,
 		tasks,
 		floorhome,
 		eventspage,
