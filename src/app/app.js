@@ -44,7 +44,7 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor($rootScope) {
+	constructor($scope, $mdDialog, firebaseServices) {
 
 		this.ref = ref;
 
@@ -52,29 +52,71 @@ class AppCtrl {
 		var password = '123456';
 
 		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
 		  console.log('ERROR: ' + error.code + ': ' + error.message);
-		  // ...
 		});
-
 
 		firebase.auth().onAuthStateChanged((user)=> {
 		  if (user) {
 		    // User is signed in.
-		    console.log('heyyyy');
+		    console.log('User changed');
 		    const isAnonymous = user.isAnonymous;
 		    const uid = user.uid;
-		    // ...
 		  } else {
-		    // User is signed out.
-		    // ...
+		  	// Admin signs out.
+
+		  	$rootScope.admin = false;
+
+		    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  console.log('ERROR: ' + error.code + ': ' + error.message);
+			});
 		  }
 		  // ...
 		});
 
+		$scope.adminLogin = function($event) {
+			$mdDialog.show({
+		      controller: DialogController,
+		      template: require('./app.adminLogin.tmpl.html'),
+		      parent: angular.element(document.body),
+			  controllerAs: 'adminLogin',
+		      targetEvent: $event,
+		      clickOutsideToClose:true,
+		      locals: {}
+		    })
+		    .then(function(del) {
+		    	$scope.status = 'Admin Login Please refresh';
 
+		    }, function() {
+		      $scope.status = 'Admin Login cancelled.';
+		    });
+		}
+
+		function DialogController($scope, $mdDialog) {
+
+		    /* Hides Modal */
+		    $scope.hide = function() {
+		        $mdDialog.hide();
+		    };
+
+		    /* Closes Modal */
+		    $scope.cancel = function() {
+		        $mdDialog.cancel();
+		    };
+
+		    /* Admin sign in */
+		    $scope.login = function(user) {
+		    	console.log(user);
+		    	var result = firebaseServices.signin(user);
+		    	if (result) {
+		    		$mdDialog.hide();
+		    	} 
+		    };
+
+		}
 	}
 }
 

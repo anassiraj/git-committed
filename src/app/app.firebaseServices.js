@@ -80,6 +80,28 @@ class firebaseServices {
 	*                  C.R.U.D. - end                     *
 	*******************************************************/
 
+	/******************************************************
+	*                   Other - start                     *
+	*******************************************************/
+
+	signin(user) {
+		firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+			.then(function(data) {
+				console.log('success : ' + firebase.auth().currentUser.email + ' signed In');
+				return true;
+			})
+			.catch(function(error) {
+				var errorCode = error.code;
+	  			var errorMessage = error.message;
+	  			console.log('ERROR: ' + error.code + ': ' + error.message);
+	  			return false;
+			});
+	};
+
+	/******************************************************
+	*                    Other - end                      *
+	*******************************************************/
+
 }
 
 export default angular.module('fbs', [])
