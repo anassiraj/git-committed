@@ -98,6 +98,41 @@ class firebaseServices {
 			});
 	};
 
+	isAdmin(uid) {
+		return firebase.database().ref('/admins/' + uid)
+			.once('value')
+			.then(function(snapshot) {
+				if (snapshot.child('role').val() === 'admin') {
+    				console.log('Admin');
+    				return true;
+  				} else {
+  					console.log('Not Admin');
+  					return false;
+  				}
+			});
+	}
+
+	getCurrentUserUid() {
+		var user = firebase.auth().currentUser
+		if (user != null) {
+			return user.uid;
+		}else{
+			return '';
+		}
+	}
+
+	signout() {
+		firebase.auth().signOut()
+			.then(function(data) {
+				console.log('success : Signed out');
+			})
+			.catch(function(error) {
+				var errorCode = error.code;
+	  			var errorMessage = error.message;
+	  			console.log('ERROR: ' + error.code + ': ' + error.message);
+			});
+	}
+
 	/******************************************************
 	*                    Other - end                      *
 	*******************************************************/
