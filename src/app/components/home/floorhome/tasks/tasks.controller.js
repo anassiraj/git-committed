@@ -1,15 +1,14 @@
 export default class TasksController {
 
-	constructor($state, $stateParams, firebaseServices, $q, $rootScope, $scope, $mdDialog) {
+	constructor($state, $stateParams, firebaseServices, $q, $rootScope,
+		$scope, $mdDialog, $firebaseObject) {
 
 		this.$state = $state;
-		
-		const taskData = firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/tasks`);
 
-		$q.all([taskData]).then( (data) => {
-			this.tasks = data[0];
-			console.log(data);
-		});
+		const rootRef = $rootScope.ref;
+		const tasksRef = rootRef.child(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/tasks`);
+		var tasksObject = $firebaseObject(tasksRef);
+		tasksObject.$bindTo($scope, 'tasks');
 
 		$scope.addTask = function(taskKey, userPin, $event, task){
 			$mdDialog.show({
@@ -67,7 +66,7 @@ export default class TasksController {
 		      $scope.status = 'Task Edit cancelled.';
 		    });
 		}
-		
+
 		//Display Building : Floor
 		//Only add to floor
 		function DialogController($scope, $mdDialog, floor, building, userPin, taskKey, editTask) {
@@ -101,7 +100,7 @@ export default class TasksController {
 
 		    	$q.all([isAdmin]).then( (data) => {
 					if ($scope.userPin === pin || data[0]) {
-			    		var path = '/buildings/' + $scope.building 
+			    		var path = '/buildings/' + $scope.building
 			      		   		 + '/floors/' + $scope.floor
 			      		   		 + '/tasks/' + $scope.taskKey;
 			    		firebaseServices.removeData(path);
@@ -126,7 +125,7 @@ export default class TasksController {
 				      	  pin: $scope.userPin
 			      	  };
 
-			      	  var path = '/buildings/' + $scope.building 
+			      	  var path = '/buildings/' + $scope.building
 			      		   	   + '/floors/' + $scope.floor
 			      		   	   + '/tasks/' + $scope.taskKey;
 			      	  firebaseServices.updateData(path, jsonObj);
@@ -138,7 +137,7 @@ export default class TasksController {
 		    };
 
 		    /* Addes new task to the floor */
-		    $scope.save = function(add) {	
+		    $scope.save = function(add) {
 		        var jsonObj = {
 		      	  name: $scope.addTask.name,
 		      	  description: $scope.addTask.description,
@@ -147,7 +146,7 @@ export default class TasksController {
 		      	  pin: $scope.addTask.pin
 		        };
 
-		        var path = '/buildings/' + $scope.building 
+		        var path = '/buildings/' + $scope.building
 		      		     + '/floors/' + $scope.floor
 		      		     + '/tasks/';
 
@@ -156,7 +155,7 @@ export default class TasksController {
 		        $mdDialog.hide();
 		    };
 		}
-	
+
 	}
-	
+
 }
