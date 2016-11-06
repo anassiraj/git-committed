@@ -17,6 +17,14 @@ export default class DataController {
 		    b.style.height = h + 'px';
 		    bar2.appendChild(b);
 		}
+
+		var bar3 = document.getElementById('bar3'), L = 10;
+		for ( var b, h, i=0; i<L; i++ ) {
+		    h = 20 + parseInt(Math.random() * 80);
+		    b = document.createElement('div');
+		    b.style.height = h + 'px';
+		    bar3.appendChild(b);
+		}
 		
 	}
 	
