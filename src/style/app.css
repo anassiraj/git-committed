@@ -184,8 +184,9 @@ md-calendar {
 
 .no-events {
   color: white;
-  font-size: 2em;
+  font-size: 1.4em;
   text-align: center;
+  margin-left: 7px;
 }
 
 #addevent-container {
@@ -198,4 +199,37 @@ md-calendar {
 
 #addevent-icon {
   background-color: #f2f2f2;
+}
+
+/* Data */
+
+#data {
+	width: 610px;
+	padding: 0 20px 20px 20px;
+}
+
+#data h2 {
+	margin-left: 7px;
+	text-align: center;
+}
+
+.bar:not(:first-child) {
+	margin-left: 20px;
+}
+
+#bar1, #bar2, #bar3 {
+    display: table-cell;
+    border: solid 1px #0574ac;
+    height: 97px;
+	vertical-align: bottom;
+}
+#bar1 > div, #bar2 > div, #bar3 > div {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20px;
+    background-color: lightblue;
+    margin-left: 2px;
+}
+#bar1 > div:first-child, #bar2 > div:first-child, #bar3 > div:first-child  {
+    margin-left: 0;
 }
