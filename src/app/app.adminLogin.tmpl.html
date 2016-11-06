@@ -8,7 +8,7 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-dialog-content style="max-width:800px;max-height:900px;" >
+    <md-dialog-content style="max-width:800px;max-height:900px;" ng-show="!$root.admin">
         <md-input-container>
           <label>Email Address</label>
           <input ng-model="adminLogin.email">
@@ -18,7 +18,7 @@
         </md-input-container>
     </md-dialog-content>
     <br>
-    <md-dialog-content style="max-width:800px;max-height:900px;" >
+    <md-dialog-content style="max-width:800px;max-height:900px;" ng-show="!$root.admin">
         <md-input-container>
           <label>Password</label>
           <input ng-model="adminLogin.password">
@@ -27,15 +27,19 @@
           </div>
         </md-input-container>
     </md-dialog-content>
+    <br>
+    <md-dialog-content style="max-width:800px;max-height:900px;" ng-show="$root.admin">
+      <p style="margin-left: 10px;">Do you wish to Signout?</p>
+    </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button ng-click="login(adminLogin)" style="margin-right:20px;">
+      <md-button ng-show="!$root.admin" ng-click="login(adminLogin)" style="margin-right:20px;">
         Sign In
       </md-button>
-      <md-button ng-click="signout()" style="margin-right:20px;">
+      <md-button ng-show="$root.admin" ng-click="signout()" style="margin-right:20px;">
         Sign out
       </md-button>
     </md-dialog-actions>
