@@ -19,7 +19,10 @@
           <p>{{eventspage.convertToMomentSince(values.eventDate)}}</p>
           <p>{{values.description}}</p>
           <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
+          <i class="icon-misc-pen" ng-click="editEvent(values.keyid, values.pin, $event, values)"></i>
+          <i class="icon-controls-x-closePRIMARY" ng-click="deleteEvent(values.keyid, values.pin, $event, false)"></i>
       </md-card-content>
+
     </md-card>
   </div>
 </section>

@@ -8,7 +8,6 @@ export default class TasksController {
 
 		$q.all([taskData]).then( (data) => {
 			this.tasks = data[0];
-			console.log(data);
 		});
 
 		$scope.addTask = function(taskKey, userPin, $event, task){
