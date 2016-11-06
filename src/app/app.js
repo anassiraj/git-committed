@@ -48,6 +48,7 @@ class AppCtrl {
 
 		this.ref = ref;
 
+
 		$rootScope.ref = this.ref;
 
 		var email = 'gitcommitted@att.com';
@@ -121,6 +122,10 @@ class AppCtrl {
 		    }
 
 		}
+	}
+
+	back() {
+		window.history.back();
 	}
 }
 
