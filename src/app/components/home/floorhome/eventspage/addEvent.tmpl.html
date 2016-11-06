@@ -1,5 +1,4 @@
 <md-dialog aria-label="Add Event">
-  <form ng-cloak>
     <md-toolbar style="background-color: lightblue;">
       <div class="md-toolbar-tools">
         <h2>Add Event to {{building}} : {{floor}}</h2>
@@ -9,11 +8,13 @@
         </md-button>
       </div>
     </md-toolbar>
+  <form name = "eventForm">
+
     <md-dialog-content>
-        <md-input-container>
+        <md-input-container class="md-block" >
           <label>Event Name</label>
           <input type="text" md-maxlength="30" required name="name" ng-model="addEvent.name">
-          <div ng-messages="addEvent.name.$error">
+          <div ng-messages="eventForm.name.$error">
             <div ng-message="required">This is required.</div>
             <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
           </div>
@@ -22,54 +23,52 @@
         <md-input-container>
           <md-datepicker required name="eventDate" ng-model="addEvent.eventDate"
                          md-placeholder="Event Date"></md-datepicker>
-          <div ng-messages="addEvent.eventDate.$error">
+          <div ng-messages="eventForm.eventDate.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <br>
         <md-input-container flex="50">
           <label>Start Time</label>
-          <input ng-model="addEvent.startTime">
-          <div ng-messages="addEvent.startTime.$error">
+          <input ng-model="addEvent.startTime" required name="startTime" placeholder="HH:mm">
+          <div ng-messages="eventForm.startTime.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
         <md-input-container flex="50">
           <label>End Time</label>
-          <input ng-model="addEvent.endTime">
-          <div ng-messages="addEvent.endTime.$error">
+          <input ng-model="addEvent.endTime" required name="endTime"placeholder="HH:mm">
+          <div ng-messages="eventForm.endTime.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
         <br>
-        <md-input-container>
+        <md-input-container class="md-block" >
           <label>Description</label>
-          <input ng-model="addEvent.description">
-          <div ng-messages="addEvent.description.$error">
+          <input ng-model="addEvent.description" required name="description">
+          <div ng-messages="eventForm.description.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
         <br>
-        <md-input-container>
+        <md-input-container class="md-block" >
           <label>Location</label>
-          <input ng-model="addEvent.location">
-          <div ng-messages="addEvent.location.$error">
+          <input ng-model="addEvent.location" required name="location">
+          <div ng-messages="eventForm.location.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
         <br>
         <md-input-container >
           <label>UID</label>
-          <input ng-model="addEvent.user">
-          <div ng-messages="addEvent.user.$error">
+          <input ng-model="addEvent.user" required name= "user">
+          <div ng-messages="eventForm.user.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <br>
         <md-input-container >
           <label>PIN</label>
-          <input ng-model="addEvent.pin">
-          <div ng-messages="addEvent.pin.$error">
+          <input ng-model="addEvent.pin" required name="pin">
+          <div ng-messages="eventForm.pin.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
@@ -79,7 +78,7 @@
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button ng-click="save('add')" style="margin-right:20px;">
+      <md-button novalidate ng-disabled="eventForm.$invalid " ng-click="save()" style="margin-right:20px;">
         Save
       </md-button>
     </md-dialog-actions>
