@@ -8,8 +8,8 @@ export default function routes($stateProvider) {
 		controller: 'EventsPageController',
 		controllerAs: 'eventspage',
     resolve: {
-      events: function(firebaseServices, $stateParams) {
-        return firebaseServices.getData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`);
+      todaysDate: function () {
+        return new Date();
       }
     }
 	});

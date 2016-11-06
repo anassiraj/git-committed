@@ -33,7 +33,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-const ref = firebase.database().ref('/data/');
+const ref = firebase.database().ref('/');
 
 let app = () => {
 	return {
@@ -44,9 +44,11 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor($scope, $mdDialog, firebaseServices) {
+	constructor($scope, $mdDialog, firebaseServices, $rootScope) {
 
 		this.ref = ref;
+
+		$rootScope.ref = this.ref;
 
 		var email = 'gitcommitted@att.com';
 		var password = '123456';
@@ -111,7 +113,7 @@ class AppCtrl {
 		    	var result = firebaseServices.signin(user);
 		    	if (result) {
 		    		$mdDialog.hide();
-		    	} 
+		    	}
 		    };
 
 		    $scope.signout = function() {
@@ -136,10 +138,31 @@ angular.module(MODULE_NAME, [
 		building,
 		ngMaterial,
 		fbs,
-		angularMoment
+		angularMoment,
+		'firebase'
 	])
+
 	.directive('app', app)
 	.config(routing)
-	.controller('AppCtrl', AppCtrl);
+	.controller('AppCtrl', AppCtrl)
+	.filter('FirebaseFilter', (moment) => {
+		return (eventObj, date) => {
+			var filteredEvents = [];
+			const selectedMomentDate = moment(date);
+			if (eventObj) {
+				_.forEach(eventObj, function (event) {
+					if (event) {
+						if (event.hasOwnProperty('name')) {
+							const convertedDate = moment(event.eventDate);
+							if (moment(selectedMomentDate).isSame(moment(convertedDate), 'day')) {
+								filteredEvents.push(event);
+							}
+						}
+					}
+				});
+				return filteredEvents;
+			}
+		}
+	});
 
 export default MODULE_NAME;
