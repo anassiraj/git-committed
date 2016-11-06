@@ -1,11 +1,11 @@
 <div class="md-toolbar-tools" id="main-nav">
-	<i class="icon-arrows-incoming-call"></i>
+	<md-button id="back-button"><i class="icon-arrows-incoming-call"></i><br />Back</md-button>
     <span flex></span>
     <h2 class="md-title text-center" ui-sref="building">
 		<img src="/img/logo.svg" />
     </h2>
     <span flex></span>
-    <md-button class="icon-people-oneperson" id="login-button"></md-button>
+    <md-button id="login-button" ng-click="adminLogin($event)"><i class="icon-people-oneperson"></i><br />Admin</md-button>
 </div>
 
 <div id="content" ui-view flex></div>

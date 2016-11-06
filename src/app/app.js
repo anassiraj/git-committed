@@ -3,11 +3,11 @@ import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 import lodash from 'lodash';
 import routing from './app.config';
-import admin from './components/admin';
 // import tasks from './components/admin/tasks';
 import floorhome from './components/home/floorhome';
 import eventspage from './components/home/floorhome/eventspage';
 import tasks from './components/home/floorhome/tasks';
+import data from './components/home/floorhome/data';
 import menus from './components/home/floorhome/menus';
 import floor from './components/home/floor';
 import building from  './components/home/building';
@@ -44,7 +44,7 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor($rootScope) {
+	constructor($scope, $mdDialog, firebaseServices) {
 
 		this.ref = ref;
 
@@ -54,29 +54,73 @@ class AppCtrl {
 		var password = '123456';
 
 		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
 		  console.log('ERROR: ' + error.code + ': ' + error.message);
-		  // ...
 		});
-
 
 		firebase.auth().onAuthStateChanged((user)=> {
 		  if (user) {
 		    // User is signed in.
-		    console.log('heyyyy');
+		    console.log('User changed');
 		    const isAnonymous = user.isAnonymous;
 		    const uid = user.uid;
-		    // ...
+		    console.log(user.email);
 		  } else {
-		    // User is signed out.
-		    // ...
+		  	// Admin signs out.
+		    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  console.log('ERROR: ' + error.code + ': ' + error.message);
+			});
 		  }
 		  // ...
 		});
 
+		$scope.adminLogin = function($event) {
+			$mdDialog.show({
+		      controller: DialogController,
+		      template: require('./app.adminLogin.tmpl.html'),
+		      parent: angular.element(document.body),
+			  controllerAs: 'adminLogin',
+		      targetEvent: $event,
+		      clickOutsideToClose:true,
+		      locals: {}
+		    })
+		    .then(function(del) {
+		    	$scope.status = 'Admin Login Please refresh';
 
+		    }, function() {
+		      $scope.status = 'Admin Login cancelled.';
+		    });
+		}
+
+		function DialogController($scope, $mdDialog) {
+
+		    /* Hides Modal */
+		    $scope.hide = function() {
+		        $mdDialog.hide();
+		    };
+
+		    /* Closes Modal */
+		    $scope.cancel = function() {
+		        $mdDialog.cancel();
+		    };
+
+		    /* Admin sign in */
+		    $scope.login = function(user) {
+		    	console.log(user);
+		    	var result = firebaseServices.signin(user);
+		    	if (result) {
+		    		$mdDialog.hide();
+		    	} 
+		    };
+
+		    $scope.signout = function() {
+		    	firebaseServices.signout();
+		    }
+
+		}
 	}
 }
 
@@ -85,8 +129,8 @@ const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [
 		uirouter,
-		admin,
 		tasks,
+		data,
 		floorhome,
 		eventspage,
 		menus,

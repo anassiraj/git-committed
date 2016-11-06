@@ -1,0 +1,42 @@
+<md-dialog aria-label="Delete Event">
+    <md-toolbar style="background-color: lightblue;">
+      <div class="md-toolbar-tools">
+        <h2>Admin Login</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:900px;" >
+        <md-input-container>
+          <label>Email Address</label>
+          <input ng-model="adminLogin.email">
+          <div ng-messages="adminLogin.email.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+    </md-dialog-content>
+    <br>
+    <md-dialog-content style="max-width:800px;max-height:900px;" >
+        <md-input-container>
+          <label>Password</label>
+          <input ng-model="adminLogin.password">
+          <div ng-messages="adminLogin.password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="login(adminLogin)" style="margin-right:20px;">
+        Sign In
+      </md-button>
+      <md-button ng-click="signout()" style="margin-right:20px;">
+        Sign out
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

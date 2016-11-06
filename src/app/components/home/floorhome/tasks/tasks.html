@@ -1,5 +1,5 @@
 <md-content style="background-color: #0574ac;">
-	<md-button class="md-raised createButton" ng-click="addTask($event)">Create Task</md-button>
+	<md-button class="md-raised createButton" ng-click="addTask(key, values.pin, $event, false)">Create Task</md-button>
 	<md-card class="tasks" ng-repeat="(key, values) in tasks.tasks">
 		<md-card-title>
 			<span class="md-headline event-title">{{values.name}} </span>
@@ -7,8 +7,8 @@
 		<md-card-content>
 			<div flex><b>Type:</b> {{values.type}}</div>
 			<div flex><b>Description:</b> {{values.description}}</div>
-			<i class="icon-misc-pen"></i>
-			<i class="icon-controls-x-closePRIMARY"></i>
+			<i class="icon-misc-pen" ng-click="editTask(key, values.pin, $event, values)"></i>
+			<i class="icon-controls-x-closePRIMARY" ng-click="deleteTask(key, values.pin, $event, false)"></i>
 		</md-card-content>
 	</md-card>
 </md-content>

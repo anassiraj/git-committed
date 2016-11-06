@@ -42,11 +42,6 @@ md-card:hover, md-button:hover {
   background-color: #0574ac;
 }
 
-#login-button {
-	font-size: 2em;
-	color: white;
-}
-
 #events md-card, #events md-button {
   cursor: pointer;
   width: inherit;
@@ -168,13 +163,31 @@ md-calendar {
 	color: lightblue;
 }
 
+#main-nav .md-button {
+  margin-top: 25px;
+  color: #fff;
+}
+
 #main-nav i {
+  margin-top: 20px;
 	font-style: normal;
-	font-size: 35px;
+	font-size: 45px;
 	color: #fff;
   cursor: pointer;
 }
 
 .md-title {
   cursor: pointer;
+}
+
+#addevent-container {
+  background-color: lightblue !important;
+}
+
+#eventdate {
+  margin-left: 7px;
+}
+
+#addevent-icon {
+  background-color: #f2f2f2;
 }

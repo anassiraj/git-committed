@@ -80,6 +80,63 @@ class firebaseServices {
 	*                  C.R.U.D. - end                     *
 	*******************************************************/
 
+	/******************************************************
+	*                   Other - start                     *
+	*******************************************************/
+
+	signin(user) {
+		firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+			.then(function(data) {
+				console.log('success : ' + firebase.auth().currentUser.email + ' signed In');
+				return true;
+			})
+			.catch(function(error) {
+				var errorCode = error.code;
+	  			var errorMessage = error.message;
+	  			console.log('ERROR: ' + error.code + ': ' + error.message);
+	  			return false;
+			});
+	};
+
+	isAdmin(uid) {
+		return firebase.database().ref('/admins/' + uid)
+			.once('value')
+			.then(function(snapshot) {
+				if (snapshot.child('role').val() === 'admin') {
+    				console.log('Admin');
+    				return true;
+  				} else {
+  					console.log('Not Admin');
+  					return false;
+  				}
+			});
+	}
+
+	getCurrentUserUid() {
+		var user = firebase.auth().currentUser
+		if (user != null) {
+			return user.uid;
+		}else{
+			return '';
+		}
+	}
+
+	signout() {
+		firebase.auth().signOut()
+			.then(function(data) {
+				console.log('success : Signed out');
+			})
+			.catch(function(error) {
+				var errorCode = error.code;
+	  			var errorMessage = error.message;
+	  			console.log('ERROR: ' + error.code + ': ' + error.message);
+			});
+	}
+
+	/******************************************************
+	*                    Other - end                      *
+	*******************************************************/
+
 }
 
 export default angular.module('fbs', [])
