@@ -5,6 +5,13 @@ export default class TasksController {
 
 		this.$state = $state;
 
+		$rootScope.typeList = [
+			    	'Breakroom',
+			    	'Office Space',
+			    	'Restrooms',
+			    	'Other'
+		    	];
+
 		console.log($rootScope.admin);
 
 		const rootRef = $rootScope.ref;

@@ -21,11 +21,11 @@
         <br>
         <md-input-container class="md-block">
           <label>Type</label>
-          <input ng-model="addTask.type" name="type" required>
-          <div ng-messages="taskForm.type.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
+          <md-select ng-model="addTask.type" placeholder="Select">
+            <md-option ng-value="types" ng-repeat="types in $root.typeList">{{types}}</md-option>
+          </md-select>
         </md-input-container>
+        <br>
         <md-input-container class="md-block">
           <label>Description</label>
           <textarea ng-model="addTask.description" required name="description" md-maxlength="150" rows="5"></textarea> 

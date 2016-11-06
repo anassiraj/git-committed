@@ -9,7 +9,7 @@
       </div>
     </md-toolbar>
     <md-dialog-content style="max-width:800px;max-height:900px;" >
-     <form name="deleteForm">
+     <form ng-show="!$root.admin" name="deleteForm">
         <md-input-container>
           <label>Re-enter Task PIN</label>
           <input ng-model="deleteTask.pin" name="pin" required>
@@ -24,7 +24,7 @@
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button novalidate ng-disabled = "deleteForm.$invalid" ng-click="delete(deleteTask.pin)" style="margin-right:20px;">
+      <md-button novalidate ng-disabled = "deleteForm.$invalid && !$root.admin" ng-click="delete(deleteTask.pin)" style="margin-right:20px;">
         Delete
       </md-button>
     </md-dialog-actions>

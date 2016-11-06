@@ -20,10 +20,9 @@
         <br>
         <md-input-container class="md-block">
           <label>Type</label>
-          <input ng-model="editTask.type">
-          <div ng-messages="editTask.type.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
+          <md-select ng-model="editTask.type" placeholder="Select">
+            <md-option ng-value="types" ng-repeat="types in $root.typeList">{{types}}</md-option>
+          </md-select>
         </md-input-container>
         <br>
         <md-input-container class="md-block">
@@ -34,7 +33,7 @@
           </div>
         </md-input-container>
         <br>
-        <form name="pinRequirement">
+        <form ng-show="!$root.admin" name="pinRequirement">
           <md-input-container>
             <label>Re-enter Task PIN</label>
             <input ng-model="editTask.pin" required name="pin">
@@ -49,7 +48,7 @@
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button novalidate ng-disabled="pinRequirement.$invalid" ng-click="edit(editTask.pin)" style="margin-right:20px;">
+      <md-button novalidate ng-disabled="pinRequirement.$invalid && !$root.admin" ng-click="edit(editTask.pin)" style="margin-right:20px;">
         Update
       </md-button>
     </md-dialog-actions>
