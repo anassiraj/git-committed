@@ -47,7 +47,6 @@ export default class EventsPageController {
 		    });
 		}
 
-<<<<<<< HEAD
 		$scope.deleteEvent = function(eventKey, userPin, $event, editEvent){
 			$mdDialog.show({
 		      controller: EditEventController,
