@@ -1,5 +1,4 @@
 <md-dialog aria-label="edit Event">
-  <form ng-cloak>
     <md-toolbar style="background-color: lightblue;">
       <div class="md-toolbar-tools">
         <h2>Edit Event on {{building}} : {{floor}}</h2>
@@ -44,7 +43,7 @@
         <br>
         <md-input-container class="md-block">
           <label>Description</label>
-          <input ng-model="editEvent.description">
+          <textarea row="2" ng-model="editEvent.description"></textarea>
           <div ng-messages="editEvent.description.$error">
             <div ng-message="required">This is required.</div>
           </div>
@@ -58,22 +57,23 @@
           </div>
         </md-input-container>
         <br>
-        <md-input-container >
-          <label>Re-enter PIN</label>
-          <input ng-model="editEvent.pin">
-          <div ng-messages="editEvent.pin.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
+        <form name="pinRequirement">
+          <md-input-container >
+            <label>Re-enter PIN</label>
+            <input ng-model="editEvent.pin" required name="pin">
+            <div ng-messages="pinRequirement.pin.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </form>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button ng-click="edit(editEvent.pin)" style="margin-right:20px;">
+      <md-button novalidate ng-disabled="pinRequirement.$invalid" ng-click="edit(editEvent.pin)" style="margin-right:20px;">
         Update
       </md-button>
     </md-dialog-actions>
-    </form>
 </md-dialog>

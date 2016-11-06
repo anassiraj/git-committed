@@ -9,53 +9,53 @@
       </div>
     </md-toolbar>
     <md-dialog-content style="max-width:800px;max-height:900px;" >
-        <md-input-container>
+      <form name = "taskForm">
+        <md-input-container class="md-block">
           <label>Task Name</label>
           <input type="text" md-maxlength="30" required name="name" ng-model="addTask.name">
-          <div ng-messages="addTask.name.$error">
+          <div ng-messages="taskForm.name.$error">
             <div ng-message="required">This is required.</div>
             <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
           </div>
         </md-input-container>
         <br>
-        <md-input-container>
-          <label>Description</label>
-          <input ng-model="addTask.description">
-          <div ng-messages="addTask.description.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
-        <br>
-        <md-input-container>
+        <md-input-container class="md-block">
           <label>Type</label>
-          <input ng-model="addTask.type">
-          <div ng-messages="addTask.type.$error">
+          <input ng-model="addTask.type" name="type" required>
+          <div ng-messages="taskForm.type.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea ng-model="addTask.description" required name="description" md-maxlength="150" rows="5"></textarea> 
+          <div ng-messages="taskForm.description.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
         <br>
-        <md-input-container>
+        <md-input-container flex="50">
           <label>UID</label>
-          <input ng-model="addTask.user">
-          <div ng-messages="addTask.user.$error">
+          <input ng-model="addTask.user" name="user" required>
+          <div ng-messages="taskForm.user.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <br>
-        <md-input-container>
+        <md-input-container flex="50">
           <label>New PIN</label>
-          <input ng-model="addTask.pin">
-          <div ng-messages="addTask.pin.$error">
+          <input ng-model="addTask.pin" name="pin" required>
+          <div ng-messages="taskForm.pin.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
+      </form>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button ng-click="save('add')" style="margin-right:20px;">
+      <md-button novalidate ng-disabled="taskForm.$invalid" ng-click="save()" style="margin-right:20px;">
         Save
       </md-button>
     </md-dialog-actions>
