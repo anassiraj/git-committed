@@ -180,6 +180,14 @@ md-calendar {
   cursor: pointer;
 }
 
+/* Events */
+
+.no-events {
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
+
 #addevent-container {
   background-color: lightblue !important;
 }

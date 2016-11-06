@@ -8,6 +8,7 @@ export default class EventsPageController {
 		var eventsObject = $firebaseObject(eventsRef);
 		eventsObject.$bindTo($scope, 'events');
 
+
 		this.todaysDate = todaysDate;
 		this.selectedDate = todaysDate;
 		this.maxDate = new Date(
@@ -211,6 +212,5 @@ export default class EventsPageController {
 				});
 		    };
 		}
-
 	}
 }
