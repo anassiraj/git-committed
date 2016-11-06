@@ -131,7 +131,8 @@ export default class EventsPageController {
 		      $mdDialog.cancel();
 		    };
 
-		    $scope.save = function(add) {
+		    $scope.save = function() {
+		    	console.log($scope.addEvent.startTime)
 		      var data = ({
 		      	'createdByUID': $scope.addEvent.user,
 		      	'description' : $scope.addEvent.description,
@@ -142,7 +143,7 @@ export default class EventsPageController {
 		      	'location' : $scope.addEvent.location,
 		      	'pin': $scope.addEvent.pin
 		      	});
-					firebaseServices.pushData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`,data);
+			  firebaseServices.pushData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`,data);
 		      $mdDialog.hide();
 		    };
 		}
