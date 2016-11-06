@@ -191,3 +191,40 @@ md-calendar {
 #addevent-icon {
   background-color: #f2f2f2;
 }
+
+/* Data */
+
+.bars {
+  position: relative;
+  padding: 10px;
+}
+
+#bar1 {
+    display: table-cell;
+    border: solid 1px #0574ac;
+}
+#bar1 > div {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20px;
+    background-color: lightblue;
+    margin-left: 2px;
+}
+#bar1 > div:first-child {
+    margin-left: 0;
+}
+
+#bar2 {
+    display: table-cell;
+    border: solid 1px #0574ac;
+}
+#bar2 > div {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20px;
+    background-color: lightblue;
+    margin-left: 2px;
+}
+#bar2 > div:first-child {
+    margin-left: 0;
+}
