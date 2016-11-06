@@ -9,9 +9,8 @@
         <md-icon id="addevent-icon" md-svg-icon="/img/addIcon.svg"></md-icon>
       </md-button>
     </md-card>
-    <!-- <md-card ng-repeat="(key, values) in eventspage.filterEventsByDate(events, eventspage.selectedDate)"> -->
-    <md-card ng-repeat="(key, values) in events | FirebaseFilter: eventspage.selectedDate">
 
+    <md-card ng-repeat="(key, values) in events | FirebaseFilter: eventspage.selectedDate as results">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline event-title">{{values.name}} </span>
@@ -24,11 +23,8 @@
           <i class="icon-misc-pen" ng-click="editEvent(values.keyid, values.pin, $event, values)"></i>
           <i class="icon-controls-x-closePRIMARY" ng-click="deleteEvent(values.keyid, values.pin, $event, false)"></i>
       </md-card-content>
-
     </md-card>
+    <div ng-if="results.length === 0" class="no-events"><strong>Sorry, no results found for today</strong></div>
   </div>
 
-  <div ng-repeat='(key, values) in eventsPage.eventsObject'>
-    <p>{{values.name}}
-  </div>
 </section>
