@@ -1,5 +1,5 @@
 <section id="events" layout="column" layout-gt-xs="row">
-  <md-calendar class="fixed-calendar" ng-model="eventspage.selectedDate" ng-click='eventspage.filterEventsByNewDate(eventspage.selectedDate)' md-min-date="eventspage.todaysDate" md-max-date="eventspage.maxDate"></md-calendar>
+  <md-calendar class="fixed-calendar" ng-model="eventspage.selectedDate" md-min-date="eventspage.todaysDate" md-max-date="eventspage.maxDate"></md-calendar>
   <div flex>
     <md-card layout="row" layout-align="end center">
         <div style="margin-left: 7px;" layout="row" layout-align="start center" flex>
@@ -9,17 +9,23 @@
         <md-icon md-svg-icon="/img/addIcon.svg"></md-icon>
       </md-button>
     </md-card>
-    <md-card ng-repeat="(key, values) in eventspage.events">
+    <!-- <md-card ng-repeat="(key, values) in eventspage.filterEventsByDate(events, eventspage.selectedDate)"> -->
+    <md-card ng-repeat="(key, values) in events | FirebaseFilter: eventspage.selectedDate">
+
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline event-title">{{values.name}} </span>
         </md-card-title-text>
       </md-card-title>
       <md-card-content>
-          <p>{{eventspage.convertToMomentSince(values.eventDate)}}</p>
+          <p>{{eventspage.convertToMomentSince(values.eventDate, values.startTime)}}</p>
           <p>{{values.description}}</p>
           <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
       </md-card-content>
     </md-card>
+  </div>
+
+  <div ng-repeat='(key, values) in eventsPage.eventsObject'>
+    <p>{{values.name}}
   </div>
 </section>
