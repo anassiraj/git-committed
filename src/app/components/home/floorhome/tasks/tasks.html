@@ -5,8 +5,8 @@
 			<span class="md-headline event-title">{{values.name}} </span>
 		</md-card-title>
 		<md-card-content>
-			<div flex><b>Type:</b> {{values.type}}</div>
-			<div flex><b>Description:</b> {{values.description}}</div>
+			<div flex>{{values.type}}</div>
+			<div flex>{{values.description}}</div>
 			<i class="icon-misc-pen" ng-click="editTask(key, values.pin, $event, values)"></i>
 			<i class="icon-controls-x-closePRIMARY" ng-click="deleteTask(key, values.pin, $event, false)"></i>
 		</md-card-content>

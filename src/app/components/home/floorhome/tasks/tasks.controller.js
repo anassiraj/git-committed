@@ -5,14 +5,11 @@ export default class TasksController {
 
 		this.$state = $state;
 
-		$q.all([taskData]).then( (data) => {
-			this.tasks = data[0];
-		});
-
 		const rootRef = $rootScope.ref;
 		const tasksRef = rootRef.child(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/tasks`);
 		var tasksObject = $firebaseObject(tasksRef);
 		tasksObject.$bindTo($scope, 'tasks');
+
 
 		$scope.addTask = function(taskKey, userPin, $event, task){
 			$mdDialog.show({
