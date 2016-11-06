@@ -33,6 +33,10 @@ class firebaseServices {
 			});
 	};
 
+	getNewKey(path) {
+		return firebase.database().ref(path).push().key
+	}
+
 	// Updates data at given path.
 	updateData(path, data) {
 		var updates = {};

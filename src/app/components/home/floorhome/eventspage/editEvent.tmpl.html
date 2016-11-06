@@ -57,7 +57,7 @@
           </div>
         </md-input-container>
         <br>
-        <form name="pinRequirement">
+        <form ng-show="!$root.admin" name="pinRequirement">
           <md-input-container >
             <label>Re-enter PIN</label>
             <input ng-model="editEvent.pin" required name="pin">
@@ -72,7 +72,7 @@
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button novalidate ng-disabled="pinRequirement.$invalid" ng-click="edit(editEvent.pin)" style="margin-right:20px;">
+      <md-button novalidate ng-disabled="pinRequirement.$invalid && !$root.admin" ng-click="edit(editEvent.pin)" style="margin-right:20px;">
         Update
       </md-button>
     </md-dialog-actions>

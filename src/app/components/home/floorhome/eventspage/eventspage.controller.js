@@ -8,7 +8,6 @@ export default class EventsPageController {
 		var eventsObject = $firebaseObject(eventsRef);
 		eventsObject.$bindTo($scope, 'events');
 
-
 		this.todaysDate = todaysDate;
 		this.selectedDate = todaysDate;
 		this.maxDate = new Date(
@@ -128,11 +127,16 @@ export default class EventsPageController {
 		    };
 
 		    $scope.cancel = function() {
-		      $mdDialog.cancel();
+		      
 		    };
 
 		    $scope.save = function() {
-		    	console.log($scope.addEvent.startTime)
+
+		      var newEventKey = firebaseServices.getNewKey('/buildings/' +
+		      											   $stateParams.currentBuilding +
+		      											   '/floors/' +
+		      											   $stateParams.currentFloor + 
+		      											   '/events/');
 		      var data = ({
 		      	'createdByUID': $scope.addEvent.user,
 		      	'description' : $scope.addEvent.description,
@@ -141,10 +145,16 @@ export default class EventsPageController {
 		      	'eventDate': $scope.addEvent.eventDate.getTime(),
 		      	'name' : $scope.addEvent.name,
 		      	'location' : $scope.addEvent.location,
-		      	'pin': $scope.addEvent.pin
+		      	'pin': $scope.addEvent.pin,
+		      	'keyid': newEventKey
 		      	});
-			  firebaseServices.pushData(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/events`,data);
-		      $mdDialog.hide();
+			  firebaseServices.updateData('/buildings/' +
+		      							  $stateParams.currentBuilding +
+		      							  '/floors/' +
+		      							  $stateParams.currentFloor + 
+		      							  '/events/' +
+		      							  newEventKey, data);
+			  $mdDialog.cancel();
 		    };
 		}
 
@@ -197,10 +207,12 @@ export default class EventsPageController {
 						    'description' : $scope.editEvent.description,
 						    'startTime': $scope.editEvent.startTime,
 						    'endTime': $scope.editEvent.endTime,
-						    'eventDate': $scope.editEvent.eventDate.getTime(),
+						    'eventDate': $scope.editEvent.eventDate,
 						    'name' : $scope.editEvent.name,
 						    'location' : $scope.editEvent.location
 					    });
+
+					    console.log($scope.eventKey);
 
 				      	var path = '/buildings/' + $scope.building 
 				      		   	 + '/floors/' + $scope.floor
