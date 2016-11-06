@@ -10,7 +10,7 @@
     </md-toolbar>
   <form name = "eventForm">
 
-    <md-dialog-content>
+    <md-dialog-content style="max-width:800px;max-height:900px;" >
         <md-input-container class="md-block" >
           <label>Event Name</label>
           <input type="text" md-maxlength="30" required name="name" ng-model="addEvent.name">
@@ -44,7 +44,7 @@
         <br>
         <md-input-container class="md-block" >
           <label>Description</label>
-          <input ng-model="addEvent.description" required name="description">
+          <textarea ng-model="addEvent.description" required name="description"md-maxlength="150" rows="5" md-maxlength="150" rows="2"></textarea> 
           <div ng-messages="eventForm.description.$error">
             <div ng-message="required">This is required.</div>
           </div>
@@ -58,14 +58,14 @@
           </div>
         </md-input-container>
         <br>
-        <md-input-container >
+        <md-input-container flex="50">
           <label>UID</label>
           <input ng-model="addEvent.user" required name= "user">
           <div ng-messages="eventForm.user.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <md-input-container >
+        <md-input-container flex="50">
           <label>PIN</label>
           <input ng-model="addEvent.pin" required name="pin">
           <div ng-messages="eventForm.pin.$error">

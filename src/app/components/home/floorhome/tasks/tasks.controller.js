@@ -24,7 +24,7 @@ export default class TasksController {
 		      locals: {floor: $stateParams.currentFloor, building: $stateParams.currentBuilding,
 		      	userPin: userPin, taskKey: taskKey, editTask: task}
 		    })
-		    .then(function(add) {
+		    .then(function() {
 		    	$scope.status = 'Adding task. Please refresh';
 
 		    }, function() {

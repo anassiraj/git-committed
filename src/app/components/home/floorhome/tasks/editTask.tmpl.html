@@ -9,7 +9,7 @@
       </div>
     </md-toolbar>
     <md-dialog-content style="max-width:800px;max-height:900px;" >
-        <md-input-container>
+        <md-input-container class="md-block">
           <label>Task Name</label>
           <input type="text" md-maxlength="30" required name="name" ng-model="editTask.name">
           <div ng-messages="editTask.name.$error">
@@ -18,15 +18,7 @@
           </div>
         </md-input-container>
         <br>
-        <md-input-container>
-          <label>Description</label>
-          <input ng-model="editTask.description">
-          <div ng-messages="editTask.description.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
-        <br>
-        <md-input-container>
+        <md-input-container class="md-block">
           <label>Type</label>
           <input ng-model="editTask.type">
           <div ng-messages="editTask.type.$error">
@@ -34,20 +26,30 @@
           </div>
         </md-input-container>
         <br>
-        <md-input-container>
-          <label>Re-enter Task PIN</label>
-          <input ng-model="editTask.pin">
-          <div ng-messages="editTask.pin.$error">
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea row="2" ng-model="editTask.description"></textarea>
+          <div ng-messages="editTask.description.$error">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
+        <br>
+        <form name="pinRequirement">
+          <md-input-container>
+            <label>Re-enter Task PIN</label>
+            <input ng-model="editTask.pin" required name="pin">
+            <div ng-messages="pinRequirement.pin.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </form>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button ng-click="edit(editTask.pin)" style="margin-right:20px;">
+      <md-button novalidate ng-disabled="pinRequirement.$invalid" ng-click="edit(editTask.pin)" style="margin-right:20px;">
         Update
       </md-button>
     </md-dialog-actions>
