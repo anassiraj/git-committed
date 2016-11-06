@@ -85,9 +85,10 @@ class firebaseServices {
 	*******************************************************/
 
 	signin(user) {
-		firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+		return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
 			.then(function(data) {
 				console.log('success : ' + firebase.auth().currentUser.email + ' signed In');
+				console.log(data);
 				return true;
 			})
 			.catch(function(error) {

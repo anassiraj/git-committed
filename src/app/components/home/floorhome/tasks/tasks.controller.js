@@ -5,6 +5,8 @@ export default class TasksController {
 
 		this.$state = $state;
 
+		console.log($rootScope.admin);
+
 		const rootRef = $rootScope.ref;
 		const tasksRef = rootRef.child(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/tasks`);
 		var tasksObject = $firebaseObject(tasksRef);

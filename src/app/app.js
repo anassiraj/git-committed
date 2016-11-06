@@ -51,6 +51,8 @@ class AppCtrl {
 
 		$rootScope.ref = this.ref;
 
+		$rootScope.admin = false;
+
 		var email = 'gitcommitted@att.com';
 		var password = '123456';
 
@@ -74,6 +76,8 @@ class AppCtrl {
 			  var errorMessage = error.message;
 			  console.log('ERROR: ' + error.code + ': ' + error.message);
 			});
+
+			$rootScope.admin = false;
 		  }
 		  // ...
 		});
@@ -96,7 +100,7 @@ class AppCtrl {
 		    });
 		}
 
-		function DialogController($scope, $mdDialog) {
+		function DialogController($rootScope, $scope, $mdDialog) {
 
 		    /* Hides Modal */
 		    $scope.hide = function() {
@@ -110,9 +114,9 @@ class AppCtrl {
 
 		    /* Admin sign in */
 		    $scope.login = function(user) {
-		    	console.log(user);
 		    	var result = firebaseServices.signin(user);
 		    	if (result) {
+		    		$rootScope.admin = true;
 		    		$mdDialog.hide();
 		    	}
 		    };
