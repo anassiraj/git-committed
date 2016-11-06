@@ -15,6 +15,7 @@ ui-view {
 
 #floornav {
 	margin-bottom: 10px;
+	align-items: center;
 }
 
 #buildings {
@@ -204,7 +205,6 @@ md-calendar {
 /* Data */
 
 #data {
-	width: 610px;
 	padding: 0 20px 20px 20px;
 }
 
@@ -213,8 +213,9 @@ md-calendar {
 	text-align: center;
 }
 
-.bar:not(:first-child) {
-	margin-left: 20px;
+.bar:not(:last-child) {
+	margin-right: 20px;
+	margin-bottom: 5px;
 }
 
 #bar1, #bar2, #bar3 {
