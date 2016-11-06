@@ -44,7 +44,7 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor($scope, $mdDialog, firebaseServices) {
+	constructor($scope, $mdDialog, firebaseServices, $rootScope) {
 
 		this.ref = ref;
 
@@ -113,7 +113,7 @@ class AppCtrl {
 		    	var result = firebaseServices.signin(user);
 		    	if (result) {
 		    		$mdDialog.hide();
-		    	} 
+		    	}
 		    };
 
 		    $scope.signout = function() {
