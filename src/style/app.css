@@ -171,13 +171,17 @@ md-calendar {
 	font-style: normal;
 }
 
+.events i {
+  font-style: normal;
+}
+
 .icon-controls-x-closePRIMARY {
-	color: #b30a3c;
+	color: #0574ac;
 	font-size: 2em;
 }
 
 .icon-misc-pen {
-	color: lightblue;
+  color: #0574ac;
 	font-size: 2em;
 }
 

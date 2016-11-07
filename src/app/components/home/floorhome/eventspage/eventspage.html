@@ -10,7 +10,7 @@
       </md-button>
     </md-card>
 
-    <md-card ng-repeat="(key, values) in events | FirebaseFilter: eventspage.selectedDate as results">
+    <md-card class="events" ng-repeat="(key, values) in events | FirebaseFilter: eventspage.selectedDate as results">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline event-title">{{values.name}} </span>
