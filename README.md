@@ -1,99 +1,20 @@
-# angular-webpack
+# PLAN
 
-[![Dependency Status](https://david-dm.org/preboot/angular-webpack/status.svg)](https://david-dm.org/preboot/angular-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular-webpack/dev-status.svg)](https://david-dm.org/preboot/angular-webpack#info=devDependencies)
+## Summary
 
-A complete, yet simple, starter for Angular using Webpack.
+PLAN is a mobile-first web app that serves as a community portal to a connected workspace. In architectural terms, the plan is an imaginary view of a builing's floor as seen from above. In the plan view, one imagines that the building is cut open a few feet above the floor line so that the viewer can see the organization of space at that level. PLAN similarly takes the concept of a building's floor as the organizing principle for the application. Users engage with other people on their floor, creating and viewing community events. Moreover, users would be able to browse events on floors of other buildings if they happen to be in a large complex. 
 
-This workflow serves as a starting point for building Angular 1.x applications using Webpack. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
+## Installing PLAN
 
-* Heavily commented webpack configuration with reasonable defaults.
-* ES6, and ES7 support with babel.
-* Source maps included in all builds.
-* Development server with live reload.
-* Production builds with cache busting.
-* Testing environment using karma to run tests and jasmine as the framework.
-* Code coverage when tests are run.
-* No gulp and no grunt, just npm scripts.
+Clone the repo `https://github.com/anassiraj/git-committed.git`. 
 
->Warning: Make sure you're using the latest version of Node.js and NPM
+Run `npm install`
 
-### Quick start
+Run `npm run`
 
-> Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.js)
-
-```bash
-# clone our repo
-$ git clone https://github.com/preboot/angular-webpack.git my-app
-
-# change directory to your app
-$ cd my-app
-
-# install the dependencies with npm
-$ npm install
-
-# start the server
-$ npm start
-```
-
-go to [http://localhost:8080](http://localhost:8080) in your browser.
-
-# Table of Contents
-
-* [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installing](#installing)
-    * [Running the app](#running-the-app)
-    * [Developing](#developing)
-    * [Testing](#testing)
-* [License](#license)
-
-# Getting Started
-
-## Dependencies
-
-What you need to run this app:
-* `node` and `npm` (Use [NVM](https://github.com/creationix/nvm))
-* Ensure you're running Node (`v4.1.x`+) and NPM (`2.14.x`+)
-
-## Installing
-
-* `fork` this repo
-* `clone` your fork
-* `npm install` to install all dependencies
-
-## Running the app
-
-After you have installed all dependencies you can now run the app with:
-```bash
-npm start
-```
-
-It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
-
-## Developing
-
-### Build files
-
-* single run: `npm run build`
-* build files and watch: `npm run watch`
-
-## Testing
-
-#### 1. Unit Tests
-
-* single run: `npm test`
-* live mode (TDD style): `npm run test-watch`
-
-# License
-
-[MIT](/LICENSE)
+In your web browser, go to `localhost:8080` to run the application.
 
 
-# Task List
-* Build Base Services
-* Build Data Structure
-* Build Skeleton UI
-* Queue Service for responses : uid@queue.att.com
-* Build DB Rules
-* Conference Room API
-* Web Font Installations    
+
+
+
