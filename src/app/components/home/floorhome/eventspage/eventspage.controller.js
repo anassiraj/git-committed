@@ -128,7 +128,7 @@ export default class EventsPageController {
 		    };
 
 		    $scope.cancel = function() {
-
+		    	$mdDialog.hide();
 		    };
 
 		    $scope.save = function() {
