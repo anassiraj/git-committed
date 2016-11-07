@@ -5,11 +5,19 @@
 			<span class="md-headline event-title">{{values.name}} </span>
 		</md-card-title>
 		<md-card-content>
-			<div flex>{{values.type}}</div>
-			<div flex>{{values.description}}</div>
-			<i class="icon-misc-pen" ng-click="editTask(key, values.pin, $event, values)"></i>
-			<i class="icon-controls-x-closePRIMARY" ng-click="deleteTask(key, values.pin, $event, false)"></i>
-			<span class="md-caption" layout="row" layout-align="end end"> {{tasks.GetTime(values.submitted)}} </span>
+			<div layout="row">
+				<div layout="column" layout-align="center left" style="width:300px;">
+					<p>{{values.type}}</p>
+					<p>{{values.description}}</p>
+					<p class="md-caption"> {{tasks.GetTime(values.submitted)}} </p>
+				</div>
+				<div layout="column" layout-align="center right" style="width:100px;">
+					<div layout="row" layout-align="center right">
+						<i class="icon-misc-pen" ng-click="editTask(key, values.pin, $event, values)"></i>
+						<i class="icon-controls-x-closePRIMARY" ng-click="deleteTask(key, values.pin, $event, false)"></i>
+					</div>
+				</div>
+			</div>
 		</md-card-content>
 	</md-card>
 </md-content>
