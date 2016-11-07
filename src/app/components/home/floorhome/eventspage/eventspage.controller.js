@@ -9,12 +9,6 @@ export default class EventsPageController {
 		eventsObject.$bindTo($scope, 'events');
 
 		this.todaysDate = todaysDate;
-		this.selectedDate = todaysDate;
-		this.maxDate = new Date(
-			this.todaysDate.getFullYear() + 1,
-			this.todaysDate.getMonth(),
-			this.todaysDate.getDate()
-		);
 
 		this.currentFloor = $stateParams.currentFloor;
 		this.currentBuilding = $stateParams.currentBuilding;
@@ -87,10 +81,14 @@ export default class EventsPageController {
 		}
 
 		this.selectedDate = this.todaysDate;
-
+		this.minDate = new Date(
+			this.todaysDate.getFullYear(),
+			this.todaysDate.getMonth() - 2,
+			this.todaysDate.getDate()
+		);
 		this.maxDate = new Date(
-			this.todaysDate.getFullYear() + 1,
-			this.todaysDate.getMonth(),
+			this.todaysDate.getFullYear(),
+			this.todaysDate.getMonth() + 2,
 			this.todaysDate.getDate()
 		);
 
