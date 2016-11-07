@@ -1,7 +1,9 @@
-<md-button aria-label="Concourse">Concourse</md-button>
-<md-button aria-label="Food Truck">Food Truck</md-button>
+<div layout="row" flex layout-align="center" ng-init="visibleDiv='concourse'">  
+  <md-button ng-click="visibleDiv='concourse'" aria-label="Concourse">Concourse</md-button>
+  <md-button ng-click="visibleDiv='foodtrucks'" aria-label="Food Truck">Food Truck</md-button>
+</div>
 <section id="menu" layout="column" layout-gt-xs="row">
-  <div id="concourse" flex>
+  <div ng-show="visibleDiv == 'concourse'" flex>
     <md-card>
       <md-card-content>
           <p>Breakfast Tacos<span class="menuprice">$4.50</span></p>
@@ -18,7 +20,7 @@
       </md-card-content>
     </md-card>
   </div>
-  <div id="foodtrucks" flex>
+  <div ng-show="visibleDiv == 'foodtrucks'" flex>
     <md-card>
       <md-card-content>
           <p>Quesadillas<span class="menuprice">$5.50</span></p>
