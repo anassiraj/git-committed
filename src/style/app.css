@@ -5,6 +5,11 @@ html, body, #content {
   font-family: 'Lato', sans-serif;
 }
 
+h1 {
+  font-weight: 300;
+  color: white;
+  font-size: 2em;
+}
 ui-view {
   background-color: #fff;
 }
