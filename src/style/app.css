@@ -219,18 +219,21 @@ md-calendar {
 }
 
 #bar1, #bar2, #bar3 {
-    display: table-cell;
-    border: solid 1px #0574ac;
-    height: 97px;
+  display: table-cell;
+  border: solid 1px #0574ac;
+  height: 97px;
 	vertical-align: bottom;
 }
 #bar1 > div, #bar2 > div, #bar3 > div {
-    display: inline-block;
-    vertical-align: bottom;
-    width: 20px;
-    background-color: lightblue;
-    margin-left: 2px;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 20px;
+  background-color: lightblue;
+  margin-left: 2px;
 }
 #bar1 > div:first-child, #bar2 > div:first-child, #bar3 > div:first-child  {
-    margin-left: 0;
+  margin-left: 0;
+}
+.menuprice {
+  float: right;
 }
