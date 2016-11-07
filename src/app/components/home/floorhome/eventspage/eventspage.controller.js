@@ -209,7 +209,8 @@ export default class EventsPageController {
 						    'endTime': $scope.editEvent.endTime,
 						    'eventDate': $scope.editEvent.eventDate,
 						    'name' : $scope.editEvent.name,
-						    'location' : $scope.editEvent.location
+						    'location' : $scope.editEvent.location,
+						    'keyid': $scope.eventKey
 					    });
 
 					    console.log($scope.eventKey);
