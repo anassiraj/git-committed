@@ -237,3 +237,6 @@ md-calendar {
 .menuprice {
   float: right;
 }
+.activebtn {
+  background-color: lightblue !important;
+}

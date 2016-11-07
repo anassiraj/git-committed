@@ -1,6 +1,6 @@
 <div layout="row" flex layout-align="center" ng-init="visibleDiv='concourse'">  
-  <md-button ng-click="visibleDiv='concourse'" aria-label="Concourse">Concourse</md-button>
-  <md-button ng-click="visibleDiv='foodtrucks'" aria-label="Food Truck">Food Truck</md-button>
+  <md-button ng-class="{ 'activebtn' : visibleDiv == 'concourse' }" ng-click="visibleDiv='concourse'" aria-label="Concourse">Concourse</md-button>
+  <md-button ng-class="{ 'activebtn' : visibleDiv == 'foodtrucks' }" ng-click="visibleDiv='foodtrucks'" aria-label="Food Truck">Food Truck</md-button>
 </div>
 <section id="menu" layout="column" layout-gt-xs="row">
   <div ng-show="visibleDiv == 'concourse'" flex>
