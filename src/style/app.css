@@ -167,10 +167,12 @@ md-calendar {
 
 .icon-controls-x-closePRIMARY {
 	color: #b30a3c;
+	font-size: 2em;
 }
 
 .icon-misc-pen {
 	color: lightblue;
+	font-size: 2em;
 }
 
 #main-nav .md-button {

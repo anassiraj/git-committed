@@ -17,11 +17,19 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-content>
-          <p>{{eventspage.convertToMomentSince(values.eventDate, values.startTime)}}</p>
-          <p>{{values.description}}</p>
-          <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
-          <i class="icon-misc-pen" ng-click="editEvent(values.keyid, values.pin, $event, values)"></i>
-          <i class="icon-controls-x-closePRIMARY" ng-click="deleteEvent(values.keyid, values.pin, $event, false)"></i>
+        <div layout='row'>
+          <div layout='column' layout-align='center left' style='width: 300px;'>
+            <p>{{values.description}}</p>
+            <p>{{values.location}} : {{values.startTime}}-{{values.endTime}}</p>
+            <p class=md-caption>{{eventspage.convertToMomentSince(values.eventDate, values.startTime)}}</p>
+          </div>
+          <div layout='column' layout-align='center right' style='width: 100px;'>
+            <div layout='row' layout-align='center right'>
+              <i class="icon-misc-pen" ng-click="editEvent(values.keyid, values.pin, $event, values)" layout-align='center right'></i>
+              <i class="icon-controls-x-closePRIMARY" ng-click="deleteEvent(values.keyid, values.pin, $event, false)" layout-align='center right'></i>
+            </div>
+          </div>
+        </div>
       </md-card-content>
     </md-card>
     <div ng-if="results.length === 0" class="no-events"><strong>Sorry, no results found for today</strong></div>
