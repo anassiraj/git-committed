@@ -114,6 +114,11 @@ button.md-raised.createButton {
   overflow: hidden !important;
 }
 
+.fixed-calendar .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+  background: #0574ac;
+}
+
+
 md-calendar {
 	margin-top: 7px;
 	margin-bottom: 7px;
@@ -211,8 +216,10 @@ md-calendar {
   margin-left: 7px;
 }
 
-#addevent-container {
-  background-color: lightblue !important;
+#addevent-container, .createButton, .createButton span {
+  color:white;
+  font-weight:700;
+  background-color: #0568ac !important;
 }
 
 #eventdate {
@@ -241,15 +248,18 @@ md-calendar {
 
 #bar1, #bar2, #bar3 {
   display: table-cell;
-  border: solid 1px #0574ac;
+/*  border: solid 1px #0574ac;*/
   height: 97px;
 	vertical-align: bottom;
 }
+
+
 #bar1 > div, #bar2 > div, #bar3 > div {
   display: inline-block;
   vertical-align: bottom;
   width: 20px;
-  background-color: lightblue;
+  background-color: #0574ac;
+
   margin-left: 2px;
 }
 #bar1 > div:first-child, #bar2 > div:first-child, #bar3 > div:first-child  {
