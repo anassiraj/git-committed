@@ -1,7 +1,7 @@
 export default class TasksController {
 
 	constructor($state, $stateParams, firebaseServices, $q, $rootScope,
-		$scope, $mdDialog, $firebaseObject) {
+		$scope, $mdDialog, $firebaseObject, moment) {
 
 		this.$state = $state;
 
@@ -14,10 +14,15 @@ export default class TasksController {
 
 		console.log($rootScope.admin);
 
+		this.GetTime = function(time){
+			const momentDate = moment(time);
+			return moment().to(momentDate);
+		}
+
 		const rootRef = $rootScope.ref;
 		const tasksRef = rootRef.child(`buildings/${$stateParams.currentBuilding}/floors/${$stateParams.currentFloor}/tasks`);
 		var tasksObject = $firebaseObject(tasksRef);
-		tasksObject.$bindTo($scope, 'tasks');
+		tasksObject.$bindTo($scope, 'tasksObject');
 
 
 		$scope.addTask = function(taskKey, userPin, $event, task){
@@ -132,7 +137,8 @@ export default class TasksController {
 				      	  name: $scope.editTask.name,
 				      	  description: $scope.editTask.description,
 				      	  type: $scope.editTask.type,
-				      	  pin: $scope.userPin
+				      	  pin: $scope.userPin,
+				      	  submitted: new Date().getTime()
 			      	  };
 
 			      	  var path = '/buildings/' + $scope.building
@@ -153,7 +159,8 @@ export default class TasksController {
 		      	  description: $scope.addTask.description,
 		      	  type: $scope.addTask.type,
 		      	  user: $scope.addTask.user,
-		      	  pin: $scope.addTask.pin
+		      	  pin: $scope.addTask.pin,
+		     	  submitted: new Date().getTime()
 		        };
 
 		        var path = '/buildings/' + $scope.building
