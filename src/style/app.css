@@ -9,6 +9,10 @@ ui-view {
   background-color: #fff;
 }
 
+md-dialog-content {
+  overflow-x: hidden !important;
+}
+
 .md-title img {
   width: 14rem;
 }
