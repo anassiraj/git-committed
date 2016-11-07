@@ -20,8 +20,9 @@ export default class EventsPageController {
 		this.currentBuilding = $stateParams.currentBuilding;
 
 		this.convertToMomentSince = function (date, startTime) {
-			var splitStartTime = startTime.substring(0, startTime.indexOf(':'));
-			const momentDate = moment(date).hour(splitStartTime);
+			const splitStartTimeHour = startTime.substring(0, startTime.indexOf(':'));
+			const splitStartTimeMinutes = startTime.substring(startTime.indexOf(':') + 1);
+			const momentDate = moment(date).hour(splitStartTimeHour).minutes(splitStartTimeMinutes);
 			return moment().to(momentDate);
 		}
 
@@ -127,7 +128,7 @@ export default class EventsPageController {
 		    };
 
 		    $scope.cancel = function() {
-		      
+
 		    };
 
 		    $scope.save = function() {
@@ -135,7 +136,7 @@ export default class EventsPageController {
 		      var newEventKey = firebaseServices.getNewKey('/buildings/' +
 		      											   $stateParams.currentBuilding +
 		      											   '/floors/' +
-		      											   $stateParams.currentFloor + 
+		      											   $stateParams.currentFloor +
 		      											   '/events/');
 		      var data = ({
 		      	'createdByUID': $scope.addEvent.user,
@@ -151,7 +152,7 @@ export default class EventsPageController {
 			  firebaseServices.updateData('/buildings/' +
 		      							  $stateParams.currentBuilding +
 		      							  '/floors/' +
-		      							  $stateParams.currentFloor + 
+		      							  $stateParams.currentFloor +
 		      							  '/events/' +
 		      							  newEventKey, data);
 			  $mdDialog.cancel();
@@ -186,7 +187,7 @@ export default class EventsPageController {
 
 		    	$q.all([isAdmin]).then( (data) => {
 					if ($scope.userPin === pin || data[0]) {
-			    		var path = '/buildings/' + $scope.building 
+			    		var path = '/buildings/' + $scope.building
 			      		   		 + '/floors/' + $scope.floor
 			      		   		 + '/events/' + $scope.eventKey;
 			    		firebaseServices.removeData(path);
@@ -215,7 +216,7 @@ export default class EventsPageController {
 
 					    console.log($scope.eventKey);
 
-				      	var path = '/buildings/' + $scope.building 
+				      	var path = '/buildings/' + $scope.building
 				      		   	 + '/floors/' + $scope.floor
 				      		   	 + '/events/' + $scope.eventKey;
 			      		firebaseServices.updateData(path, jsonObj);
