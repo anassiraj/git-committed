@@ -209,7 +209,8 @@ export default class EventsPageController {
 						    'eventDate': $scope.editEvent.eventDate,
 						    'name' : $scope.editEvent.name,
 						    'location' : $scope.editEvent.location,
-						    'keyid': $scope.eventKey
+						    'keyid': $scope.eventKey,
+						    'pin': $scope.userPin
 					    });
 
 					    console.log($scope.eventKey);
