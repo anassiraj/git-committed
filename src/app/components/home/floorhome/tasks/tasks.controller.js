@@ -122,6 +122,16 @@ export default class TasksController {
 			    		$mdDialog.hide();
 			    	} else {
 			    		console.log('PIN DOES NOT MATCH');
+			      		$mdDialog.hide();
+			      		$mdDialog.show(
+					      $mdDialog.alert()
+					        .parent(angular.element(document.querySelector('#popupContainer')))
+					        .clickOutsideToClose(true)
+					        .title('Error')
+					        .textContent('PIN DOES NOT MATCH')
+					        .ariaLabel('Alert Dialog')
+					        .ok('Got it!')
+					    );
 			    	}
 				});
 		    };
@@ -148,6 +158,16 @@ export default class TasksController {
 			      	  $mdDialog.hide();
 			        } else {
 			      	  console.log('PIN DOES NOT MATCH');
+			      		$mdDialog.hide();
+			      		$mdDialog.show(
+					      $mdDialog.alert()
+					        .parent(angular.element(document.querySelector('#popupContainer')))
+					        .clickOutsideToClose(true)
+					        .title('Error')
+					        .textContent('PIN DOES NOT MATCH')
+					        .ariaLabel('Alert Dialog')
+					        .ok('Got it!')
+					    );
 			        }
 				});
 		    };
