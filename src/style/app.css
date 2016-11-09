@@ -34,7 +34,7 @@ md-dialog-content {
 }
 
 #buildings {
-	height: calc(100vh + 200px);
+	height: calc(50vh + 400px);
 }
 
 /* Floors */
