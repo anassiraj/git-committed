@@ -44,7 +44,7 @@ let app = () => {
 };
 
 class AppCtrl {
-	constructor($scope, $mdDialog, firebaseServices, $rootScope) {
+	constructor($scope, $mdDialog, firebaseServices, $rootScope, $q) {
 
 		this.ref = ref;
 
@@ -114,10 +114,46 @@ class AppCtrl {
 
 		    /* Admin sign in */
 		    $scope.login = function(user) {
+		    	console.log('im actually here');
 		    	var result = firebaseServices.signin(user);
 		    	if (result) {
-		    		$rootScope.admin = true;
-		    		$mdDialog.hide();
+		    		var uid = firebaseServices.getCurrentUserUid();
+			    	var isAdmin = firebaseServices.isAdmin(uid);
+
+			    	$q.all([isAdmin]).then( (data) => {
+			    		console.log('in data');
+			    		if(data[0]){
+			    			console.log('is admin');
+							$rootScope.admin = true;
+		    				$mdDialog.hide();
+			    		}
+			    		else{
+							console.log('USER DOES NOT MATCH');
+				      		$mdDialog.hide();
+				      		$mdDialog.show(
+						      $mdDialog.alert()
+						        .parent(angular.element(document.querySelector('#popupContainer')))
+						        .clickOutsideToClose(true)
+						        .title('Error')
+						        .textContent('INVALID AUTHENTICATION')
+						        .ariaLabel('Alert Dialog')
+						        .ok('Got it!')
+						    );
+			    		}
+					});
+		    	}
+		    	else{
+		    		console.log('Connection Error');
+		      		$mdDialog.hide();
+		      		$mdDialog.show(
+				      $mdDialog.alert()
+				        .parent(angular.element(document.querySelector('#popupContainer')))
+				        .clickOutsideToClose(true)
+				        .title('Error')
+				        .textContent('CONNECTION ERROR')
+				        .ariaLabel('Alert Dialog')
+				        .ok('Got it!')
+				    );
 		    	}
 		    };
 
